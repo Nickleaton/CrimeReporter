@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entry>
+  <title>{{ entry.title }}</title>
+  <link href="{{ entry.link }}" />
+
+  {# Handle multiple content blocks #}
+  {% if entry.content %}
+    {% for c in entry.content %}
+  <content type="{{ c.type if c.type else 'html' }}"><![CDATA[{{ c.value }}]]></content>
+    {% endfor %}
+  {% elif entry.summary %}
+  <content type="html"><![CDATA[{{ entry.summary }}]]></content>
+  {% endif %}
+
+  {# Handle multiple authors #}
+  {% if entry.authors %}
+    {% for a in entry.authors %}
+  <author>{{ a.name }}</author>
+    {% endfor %}
+  {% elif entry.author %}
+  <author>{{ entry.author }}</author>
+  {% endif %}
+
+  {# Optional published date #}
+  {% if entry.published %}
+  <published>{{ entry.published }}</published>
+  {% endif %}
+
+  {# Optional categories #}
+  {% if entry.categories %}
+    {% for cat in entry.categories %}
+  <category term="{{ cat }}" />
+    {% endfor %}
+  {% endif %}
+</entry>

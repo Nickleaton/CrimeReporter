@@ -1,0 +1,66 @@
+Date
+===============
+{{ date }}
+===============
+
+Title
+===============
+{{ title }}
+===============
+
+Source
+===============
+{{ source }}
+===============
+
+text
+===============
+{{ text }}
+===============
+
+url
+===============
+{{ url }}
+===============
+
+id
+===============
+{{ identifier }}
+===============
+
+Files
+===============
+{% for file in files %}
+{{ file }}
+{% endfor %}
+===============
+
+Summarise the story into the following yaml format
+
+===============
+{{ yaml }}
+===============
+
+Return the yaml format unquoted.
+For the title and thumbnail text, make it under 50 characters. Name of the main offender and their crime. If just a victim, then their name and the offence against them.
+
+Thumbnail text to be the same as the title
+Description is short. The summary in the segment is long.
+For the long text write over multiple lines
+Tags optimised for a youtube video
+
+Type should be Politics or Crime. If its about an offending police man, Police
+
+Don't use triple single quotes in the answer.
+
+for the thumbnail image pick the most likely file in files to contain the image of the offender
+
+For the people mentioned, include them and the offences, sentences if known, with a role of Offender
+Do not include the police in the list.
+For the victims include them with a role of Victim if you know their names
+
+Take the text and use that to generate the yaml tags for youtube that optimises for views
+Include the name of any offenders as individual tags
+Include the location in the tags. If the location is Like Lancing Sussex, England, UK. Then one tag for each.
+In the tags include the name of the police force
+Include the Type in the tags

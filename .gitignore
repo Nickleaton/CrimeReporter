@@ -1,0 +1,12 @@
+caches/*
+keys/*
+segment*.mp3
+landscape.png
+description.txt
+audio.mp3
+text.txt
+landscape.mp4
+/logs/
+/local_storage/
+/.benchmarks/
+

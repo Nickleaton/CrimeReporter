@@ -1,0 +1,778 @@
+moveable:
+  - caches
+  - downloads
+  - programs
+  - keys_directory
+  - local_storage
+  - logs
+  - programs
+  - log.launcher_log
+  - youtube_secrets
+  - speech_to_text
+  - engines.engine.open_ai_api_key_file
+  - logging.handlers.youtube_file.filename
+  - logging.handlers.audio_file.filename
+  - logging.handlers.ai_file.filename
+  - logging.handlers.youtube_file.filename
+
+
+
+caches: caches
+downloads: downloads
+keys_directory: keys
+local_storage: local_storage
+logs: logs
+programs: programs
+#target: D:\PycharmProjects\CrimeReportData
+logging:
+  version: 1
+  disable_existing_loggers: false
+  formatters:
+    default:
+      format: '%(asctime)s - %(name)-40s - %(levelname)-8s - %(message)s'
+      datefmt: '%Y-%m-%d %H:%M:%S'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      formatter: default
+      level: INFO
+    youtube_file:
+      class: logging.FileHandler
+      formatter: default
+      level: INFO
+      filename: logs/youtube.log
+      encoding: utf-8
+    audio_file: # <-- new handler
+      class: logging.FileHandler
+      formatter: default
+      level: INFO
+      filename: logs/audio.log
+      encoding: utf-8
+    ai_file: # <-- new handler for AI calls
+      class: logging.FileHandler
+      formatter: default
+      level: INFO
+      filename: logs/ai.log
+      encoding: utf-8
+  root:
+    level: INFO
+    handlers: [ console ]
+  loggers:
+    call.logger.youtube:
+      level: INFO
+      handlers: [ youtube_file ]
+      propagate: false
+    call.logger.audio:
+      level: INFO
+      handlers: [ audio_file ]
+      propagate: false
+    call.logger.ai:
+      level: INFO
+      handlers: [ ai_file ]
+      propagate: false
+    httpx:
+      level: WARNING
+      propagate: false
+pages:
+  index: 'http://localhost:8000/downloads/index.html'
+
+# Number of days to include in the index
+
+index_days: 7
+
+# Checks on lengths of strings
+validation:
+  # To fix on screen
+  maximum_title: 50
+  # To fix on screen
+  maximum_thumbnail_line: 50
+  # Needed to be capped for posting to x etc
+  maximum_description: 300
+
+# Logging of all message, and roll over
+log:
+  min_lines: 2000
+  max_lines: 10000
+  launcher_log: logs/launcher.log
+phonemes:
+  - phoneme:
+      source: Seat
+      target: <sub alias="sea-at">Seat</sub>
+  - phoneme:
+      source: Reading
+      target: <sub alias="redding">Reading</sub>
+  - phoneme:
+      source: Bevan
+      target: <sub alias="beven">Bevan</sub>
+  - phoneme:
+      source: brooch
+      target: <sub alias="broach">brooch</sub>
+  - phoneme:
+      source: Mia
+      target: <phoneme alphabet="x‑sampa" ph="mi:ə">Mia</phoneme>
+  - phoneme:
+      source: Epee
+      target: <phoneme alphabet="x-sampa" ph="e.pe">Epee</phoneme>
+  - phoneme:
+      source: Appleby
+      target: <sub alias="Applebee">Appleby</sub>
+  - phoneme:
+      source: Tydfil
+      target: <phoneme alphabet="x-sampa" ph="tId vIl">Tydfil</phoneme>
+  - phoneme:
+      source: Grindr
+      target: <sub alias="grinder">Grindr</sub>
+  - phoneme:
+      source: Sergeant
+      target: <sub alias="Sargent">Sergeant</sub>
+  - phoneme:
+      source: Islington
+      target: <sub alias="Is lington">Islington</sub>
+  - phoneme:
+      source: epee
+      target: <sub alias="epay">epee</sub>
+  - phoneme:
+      source: Bondi
+      target: <sub alias="Bondeye">Bondi</sub>
+  - phoneme:
+      source: Hertfordshire
+      target: <sub alias="Heartfordshire">Hertfordshire</sub>
+  - phoneme:
+      source: semen
+      target: <sub alias="seamen">semen></sub>
+  - phoneme:
+      source: Giuffre
+      target: <sub alias="jewfray">Giuffre</sub>
+  - phoneme:
+      source: Clouseau
+      target:  <sub alias="clue seau">Clouseau</sub>
+  - phoneme:
+      source: Southwark
+      target: <sub alias="sudduck">Southwark</sub>
+  - phoneme:
+      source: Sandiacre
+      target: <sub alias="Sandy acre">Sandiacre</sub>
+  - phoneme:
+      source: SIA
+      target: >
+        Security Industry Authority
+  - phoneme:
+      source: Thames
+      target: <sub alias="tems">Thames</sub>
+  - phoneme:
+      source: DEI
+      target: >
+        <phoneme alphabet="x-sampa" ph="di: i: aI">DEI</phoneme>
+  - phoneme:
+      source: category A
+      target: category <phoneme alphabet="x-sampa" ph="eI">A</phoneme>
+  - phoneme:
+      source: Class A
+      target: Class <phoneme alphabet="x-sampa" ph="eI">A</phoneme>
+  - phoneme:
+      source: Class B
+      target: Class <phoneme alphabet="x-sampa" ph="bi:">B</phoneme>
+  - phoneme:
+      source: Class C
+      target: Class <phoneme alphabet="x-sampa" ph="si:">C</phoneme>
+  - phoneme:
+      source: colleague A
+      target: colleague <phoneme alphabet="x-sampa" ph="eI">A</phoneme>
+  - phoneme:
+      source: colleague B
+      target: colleague <phoneme alphabet="x-sampa" ph="bi:">B</phoneme>
+  - phoneme:
+      source: colleague C
+      target: colleague <phoneme alphabet="x-sampa" ph="si:">B</phoneme>
+  - phoneme:
+      source: "101"
+      target: <phoneme alphabet="x-sampa" ph="wVn @U wVn">101</phoneme>
+  - phoneme:
+      source: slavery
+      target: <sub alias="slaveree">slavery</sub>
+  - phoneme:
+      source: slaver
+      target: <sub alias="slave-er">slaver</sub>
+  - phoneme:
+      source: Salisbury
+      target: <sub alias="Sallsbree">Salisbury</sub>
+  - phoneme:
+      source: Woolwich
+      target: <sub alias="Wollitch">Woolwich</sub>
+  - phoneme:
+      source: Gillingham
+      target: <sub alias="Jillingham">Gillingham</sub>
+  - phoneme:
+      source: Powys
+      target: <sub alias="Powis">Powys</sub>
+  - phoneme:
+      source: PAVA
+      target: <sub alias="parver">PAVA</sub>
+launcher:
+  geometry: "1200x700"
+port: 8000
+youtube:
+  find_by_title: False
+  sleep_after_upload: 15
+bluesky:
+  maximum_image_size: 1000000
+youtube_secrets: keys/youtube_secrets.json
+speech_to_text: keys/tts-key.json
+ai_command: Ollama
+extractor: Trafilatura
+engines:
+  - engine:
+      name: OpenAI
+      open_ai_api_key_file: keys/openai.json
+      model: gpt-4o-mini
+  - engine:
+      name: Ollama
+      model: qwen3:8b
+image_extensions:
+  - ".png"
+  - ".bmp"
+  - ".jpg"
+  - ".jpeg"
+  - ".gif"
+  - ".webp"
+audio:
+  engine: GCPTextToSpeech
+  voice: en-GB-Neural2-A
+  language: en
+  options: ""
+  language_code: en-UK
+  voice_gender: FEMALE
+Tags:
+  - Animal cruelty
+  - Anti-social behaviour
+  - Arrest
+  - Arson
+  - Charged
+  - Convicted
+  - Guilty
+  - Murder
+  - Assault
+  - Asset recovery
+  - Proceeds of Crime
+  - Bike seizure
+  - Traffic offences
+  - Burglary
+  - Dangerous driving
+  - Cash seizure
+  - Child sexual offences
+  - Confiscation order
+  - Corruption
+  - County Lines
+  - Courts
+  - Domestic violence
+  - Drug offences
+  - Drug supply
+  - Drug trafficking
+  - Drugs
+  - Trafficking
+  - Dealing
+  - Supply
+  - Explosive substance
+  - False imprisonment
+  - Firearms
+  - GBH
+  - Homicide
+  - Infanticide
+  - Judicial violence
+  - Knife crime
+  - Stabbing
+  - Sentencing
+  - Misconduct
+  - Organised crime
+  - Rape
+  - Sexual assault
+  - Sexual abuse
+  - Sexual harassment
+  - Robbery
+  - Theft
+  - Shoplifting
+  - Speeding
+Commands:
+  - name: Grab
+    command: "python scripts\\grab.py grab"
+    refresh: false
+
+  - name: AIDownload
+    command: "python scripts\\news.py aidownload -s {source} -i {identifier}"
+    refresh: true
+
+  - name: Compose
+    command: "python scripts\\news.py compose_image -p {program}"
+
+  - name: Template
+    command: "python scripts\\news.py template"
+    refresh: true
+
+  - name: Preview
+    command: "python scripts\\news.py compose_image validate text thumbnail html -p {program}"
+    refresh: false
+
+  - name: Video
+    command: "python scripts\\news.py compose_image validate text thumbnail html audio video -p {program}"
+    refresh: false
+
+  - name: Publish
+    command: "python scripts\\news.py compose_image validate text thumbnail html audio video youtube xpost blueskypost -p {program}"
+    refresh: false
+
+  - name: Youtube
+    command: "python scripts\\news.py validate youtube -p {program}"
+    refresh: false
+
+  - name: PostAll
+    command: "python scripts\\news.py validate xpost blueskypost -p {program}"
+    refresh: false
+
+  - name: PostX
+    command: "python scripts\\news.py validate xpost -p {program}"
+    refresh: false
+
+  - name: PlayList
+    command: "python scripts\\news.py playlist -p {program}"
+    refresh: false
+
+  - name: Archive
+    command: "python scripts\\news.py archive -p {program}"
+    refresh: false
+
+source:
+  offender_source:
+    start_page: 1
+    end_page: 1
+
+sources:
+
+  - source:
+      short_name: Dorset
+      directory: Dorset
+      long_name: Dorset Police
+      root: https://news.dorset.police.uk/
+      youtube_id: DorsetPoliceHQ
+      channel_id: UCWLWnCS_L5BdugWYenoTgxg
+      source_type: DorsetForce
+
+  - source:
+      short_name: NCAWanted
+      directory: NCAWanted
+      long_name: National Crime Agency Wanted
+      root: https://www.nationalcrimeagency.gov.uk/most-wanted/
+      youtube_id:
+      channel_id:
+      source_type: NCAWantedForce
+
+  - source:
+      short_name: NCA
+      directory: NCA
+      long_name: National Crime Agency
+      root: https://www.nationalcrimeagency.gov.uk/news/
+      youtube_id: NationalCrimeAgency
+      channel_id: UCwcS_SzqIT9Ze0KfcxiE5sA
+      source_type: NCAForce
+
+  - source:
+      short_name: Hants
+      directory: Hampshire
+      long_name: Hampshire Police
+      root: https://www.hampshire.police.uk/news/hampshire/news/
+      youtube_id: OfficialHantsPolice
+      channel_id: UCeOXZK0EJ8VPQX9ZJjGQCmw
+      source_type: TypeAPoliceForce
+
+
+  - source:
+      short_name: AvonSomset
+      directory: AvonAndSomerset
+      long_name: Avon and Somerset Police
+      root: https://www.avonandsomerset.police.uk/news/
+      youtube_id: avonandsomersetpolice
+      channel_id: UC7Jbtj-ws3XAZnAjyxQuY6A
+      source_type: AvonSomersetForce
+
+  - source:
+      short_name: CofL
+      directory: cityoflondon
+      long_name: City of London Police
+      root: https://www.cityoflondon.police.uk/news/city-of-london/news/
+      youtube_id: CityofLondonPolice
+      channel_id: UCLixr4BBbPGNXFF_UN06-Cw
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: CPS
+      directory: CPS
+      long_name: Crown Prosecution Service
+      youtube_id: CrownProsecutionService
+      channel_id: UCnBa-3-smS732mp7J1sJxIQ
+      root: https://www.cps.gov.uk/news
+      source_type: CPSSource
+
+  - source:
+      short_name: Lancs
+      directory: Lancashire
+      long_name: Lancashire Police
+      root: https://news.lancashire.police.uk/
+      youtube_id: lancspolice
+      channel_id: UCwA27wxar1D1mjAcOTFinIg
+      source_type: LancsPoliceForce
+
+  - source:
+      short_name: Wiltshire
+      directory: Wiltshire
+      long_name: Wiltshire Police
+      root: https://www.wiltshire.police.uk/news/
+      youtube_id: WiltsPolice
+      channel_id: UCD9A3MUdklVGH2tV68vdnwA
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Warwick
+      directory: Warwick
+      long_name: Warwickshire Police
+      root: https://www.warwickshire.police.uk/news/
+      youtube_id: WarwickshirePolice1
+      channel_id: UCztxvo5qbhOnLUFC4KfDNwA
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: OFFX
+      directory: OFFX
+      long_name: Offenders
+      root: https://offenders.org.uk/
+      source_type: OffendersSource
+
+  - source:
+      short_name: Staffs
+      directory: Staffordshire
+      long_name: Staffordshire Police
+      root: https://www.staffordshire.police.uk/news/staffordshire/news/
+      youtube_id: staffordshirepoliceofficial
+      channel_id: UCJza9sCERx4XFHKyIqQbPAg
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: WMid
+      directory: WestMidlands
+      long_name: West Midlands Police
+      root: https://www.westmidlands.police.uk/news/west-midlands/news/
+      youtube_id: westmidlandspolice
+      channel_id: UCX4ZHRgrnJxLoxFZJHwueMA
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: MetMisconduct
+      directory: Met
+      long_name: MetMisconduct
+      root: https://www.met.police.uk/foi-ai/af/accessing-information/published-items/?q=&dt=Misconduct+outcome
+      source_type: MetMisconductForce
+
+  - source:
+      short_name: Met
+      directory: MetPolice
+      long_name: Metropolitan Police Service
+      root: https://news.met.police.uk/latest_news
+      youtube_id: metpolice_uk
+      channel_id: UC0Xe--tV7PTSI-ZnEbiAwUA
+      source_type: MetPoliceForce
+
+  - source:
+      short_name: PSNI
+      directory: PSNI
+      long_name: Police Service of Northern Ireland
+      root: https://www.psni.police.uk/latest-news
+      youtube_id: PoliceServiceOfNorthernIreland
+      channel_id: UC33ojB2rFfV9zAzv2_6qPtQ
+      source_type: PSNIForce
+
+  - source:
+      short_name: Mersey
+      directory: Merseyside
+      long_name: Merseyside Police
+      root: https://www.merseyside.police.uk/news/merseyside/news/
+      youtube_id: merseysidepolice
+      channel_id: UC8Pgs99wBv7xM-oLUJlKj4Q
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Beds
+      directory: Bedfordshire
+      long_name: Bedfordshire Police
+      root: https://www.beds.police.uk/news/bedfordshire/news/
+      youtube_id: bedfordshirepolice
+      channel_id: UCq-QuOfyrD9Jdq9C2QZFwZw
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: BTP
+      directory: BritishTransportPolice
+      long_name: British Transport Police
+      root: https://www.btp.police.uk/news/btp/news/
+      youtube_id: BritishTransportPoliceBTP
+      channel_id: UCutjmh9G8G4_Y-kVrwufbqQ
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Cambs
+      directory: Cambridgeshire
+      long_name: Cambridgeshire Police
+      root: https://www.cambs.police.uk/news/cambridgeshire/news/
+      youtube_id: CambridgeshirePolice
+      channel_id: UCYnDoqy8XntWQ3w8w9WzG1Q
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Chshr
+      directory: Cheshire
+      long_name: Cheshire Police
+      root: https://www.cheshire.police.uk/news/cheshire/news/
+      youtube_id: CheshirePolice
+      channel_id: UCp-pEMRqM2y4NAdz-qtdoGw
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Cleve
+      directory: Cleveland
+      long_name: Cleveland Police
+      root: https://www.cleveland.police.uk/news/cleveland/news/
+      youtube_id: clevelandpolice
+      channel_id: UCyRYEpJZmSmhztd32Jk8hsA
+      source_type: TypeAPoliceForce
+
+
+  - source:
+      short_name: Derby
+      directory: Derbyshire
+      long_name: Derbyshire Police
+      root: https://www.derbyshire.police.uk/news/derbyshire/news/
+      youtube_id: derbyshirepolice
+      channel_id: UCI6ScnSIKZtvckHcYIYCENA
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Durh
+      directory: Durham
+      long_name: Durham Police
+      root: https://www.durham.police.uk/news/durham/news/
+      youtube_id: DurhamPolice999
+      channel_id: UCYNVEK7fg7_vz7HT3tVfXIQ
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: DyfedPowys
+      directory: DyfedPowys
+      long_name: Dyfed-Powys Police
+      root: https://www.dyfed-powys.police.uk/news/dyfed-powys/news/
+      youtube_id: HeddluDyfedPowysPolice
+      channel_id: UCBkeIFnQ1eehQdIrEHg3fEg
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Essex
+      long_name: Essex Police
+      directory: Essex
+      root: https://www.essex.police.uk/news/essex/news/
+      youtube_id: essexpoliceuk
+      channel_id: UC2vYM--OklVcgOSb5SkuY4g
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Gloucs
+      directory: Gloucestershire
+      long_name: Gloucestershire Police
+      root: https://www.gloucestershire.police.uk/news/gloucestershire/news/
+      youtube_id: GlosPolice
+      channel_id: UC3v5g3AEn-Xh2jXbao9HD3g
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: GMP
+      directory: GMP
+      long_name: Greater Manchester Police
+      root: https://www.gmp.police.uk/news/greater-manchester/news/
+      youtube_id: gmpolice
+      channel_id: UC2nzRhf7x6_-ShxGo39rzKg
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Gwent
+      directory: Gwent
+      long_name: Gwent Police
+      root: https://www.gwent.police.uk/news/gwent/news/
+      youtube_id: gwentpolice
+      channel_id: UCRxQWXGF9rt1slob4GIWrsw
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Herts
+      directory: Hertfordshire
+      long_name: Hertfordshire Police
+      root: https://www.herts.police.uk/news/hertfordshire/news/
+      youtube_id: hertspolice
+      channel_id: UC7ATj_GgQ2etbpItW-jB45Q
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Humber
+      directory: Humberside
+      long_name: Humberside Police
+      root: https://www.humberside.police.uk/news/news-search/
+      youtube_id: HPHumberbeat
+      channel_id: UCzvOEmloBKjSsiKn4g3vPdg
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Kent
+      directory: Kent
+      long_name: Kent Police
+      root: https://www.kent.police.uk/news/kent/latest/
+      youtube_id: kentpolicevideos
+      channel_id: UCWN4PaS8--KNw_u2IiZZyhg
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Leics
+      directory: Leicestershire
+      long_name: Leicestershire Police
+      root: https://www.leics.police.uk/news/leicestershire/news/
+      youtube_id: leicspolice
+      channel_id: UCT_Yy4FinvkmpEJzwuDRtJQ
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Lincs
+      directory: Lincolnshire
+      long_name: Lincolnshire Police
+      root: https://www.lincs.police.uk/news/lincolnshire/news/
+      youtube_id: lincolnshirepolice
+      channel_id: UCp-egyV8BkgTl0CP-pTjnuQ
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: MISCON
+      directory: MISCON
+      long_name: Misconduct
+      root: https://misconduct999.com/news/
+      source_type: MisconductSource
+
+  - source:
+      short_name: Norfolk
+      directory: Norfolk
+      long_name: Norfolk Police
+      root: https://www.norfolk.police.uk/news/norfolk/news/
+      youtube_id: NorfolkConstabulary
+      channel_id: UCS9JeowLkqvZ_zG0egFkBKg
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Northhant
+      directory: Northamptonshire
+      long_name: Northamptonshire Police
+      root: https://www.northants.police.uk/news/northants/news/
+      youtube_id: northantspolice
+      channel_id: UCg38c304XUhLr990TM0GniA
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Northmb
+      directory: Northumberland
+      long_name: Northumbria Police
+      root: https://www.northumbria.police.uk/news/northumbria/news/
+      youtube_id: northumbriapolice
+      channel_id: UCkFw0ezL1rmlyuox6xuFAWQ
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Notts
+      directory: Notts
+      long_name: Nottinghamshire Police
+      root: https://www.nottinghamshire.police.uk/news/
+      youtube_id: nottinghampolice
+      channel_id: UCcZyArYwEcl0q37J1cMS8SQ
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: NWales
+      directory: NorthWales
+      long_name: North Wales Police
+      root: https://www.northwales.police.uk/news/north-wales/news/
+      youtube_id: northwalespoliceTV
+      channel_id: UCgnsZ08KoNo6C5go03620Cw
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: SYP
+      directory: SouthYorkshire
+      long_name: South Yorkshire Police
+      root: https://www.southyorkshire.police.uk/news/south-yorkshire/news/
+      youtube_id: SYPCommunications
+      channel_id: UCQf7XHPxzORiSpaVbboKoHA
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: SWales
+      directory: SouthWales
+      long_name: South Wales Police
+      root: https://www.south-wales.police.uk/news/south-wales/news/
+      youtube_id: swptv
+      channel_id: UCa3CYswfsIv1H9AjhjOi1TQ
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Suffolk
+      directory: Suffolk
+      long_name: Suffolk Police
+      root: https://www.suffolk.police.uk/news/suffolk/news/
+      youtube_id: SuffolkConstabularyUK
+      channel_id: UCkckoEO0D4B8oaLovupubJA
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Surrey
+      directory: Surrey
+      long_name: Surrey Police
+      root: https://www.surrey.police.uk/news/surrey/news/
+      youtube_id: surreypolice
+      channel_id: UC5H6ukrzsLlKg9qXdW6YJKg
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Sussex
+      directory: Sussex
+      long_name: Sussex Police
+      root: https://www.sussex.police.uk/news/sussex/news/
+      youtube_id: sussexpoliceforce
+      channel_id: UCkOH_jdJOyA7sXZCry1Nwwg
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: Thames
+      directory: ThamesValley
+      long_name: Thames Valley Police
+      root: https://www.thamesvalley.police.uk/news/thames-valley/news/
+      youtube_id: thamesvalleypoliceuk
+      channel_id: UCjo5E1bTd_I-pL928wVCcZg
+      source_type: TypeAPoliceForce
+
+  - source:
+      short_name: WYP
+      directory: WestYorkshire
+      long_name: West Yorkshire Police
+      root: https://www.westyorkshire.police.uk/news-stories-all
+      youtube_id: 999tv
+      channel_id: UCenYVdwMYCNX_mbqkyZ8NYg
+      source_type: WestYorkshireForce
+
+  - source:
+      short_name: WMercia
+      directory: WestMercia
+      long_name: West Mercia Police
+      root: https://www.westmercia.police.uk/news/west-mercia/news/
+      youtube_id: westmerciapolicetv
+      channel_id: UCNhIUo0FatL9nXYnm2eeGPw
+      source_type: TypeAPoliceForce
+
+

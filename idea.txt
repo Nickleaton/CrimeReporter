@@ -1,0 +1,23 @@
+Queue
+=====
+
+id
+priority
+Start after time
+command
+parameters*
+worker
+add time
+state work time
+end time
+category
+
+Only one worker of each poster type [youtube, x, bluesky at one point in time]
+One Ollama worker only
+Downloaders - lot.
+
+
+Clunk Click - Doors to Automatic and Cross check. The weather In Bangladesh is hot and we will be cruising at 39,000 feet ...
+
+
+@GrouchoMarx-MaGeorge

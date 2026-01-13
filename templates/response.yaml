@@ -1,0 +1,48 @@
+Type: Crime
+Date: 2025-09-05
+Title: Man charged over murder of woman in Greenwich
+ThumbNailText: |
+  Man charged over murder of woman in Greenwich
+URL: https://news.met.police.uk/news/man-charged-over-murder-of-woman-in-greenwich-500734
+Thumbnail: 
+Location: Greenwich, UK
+Tags:
+  - murder
+  - Greenwich
+  - crime news
+  - stabbing
+  - police
+Description: A man has been charged with the murder of a 29-year-old woman in Greenwich following a stabbing incident.
+People:
+  - Person:
+      Name: Halyna Hoisan
+      Nationality: Ukrainian
+      Gender: Female
+      Role: Victim
+  - Person:
+      Name: Yurii Muzyka
+      Nationality: Ukrainian
+      Age: 33
+      DateOfBirth: 1992-03-23
+      Gender: Male
+      Role: Offender
+      Crimes:
+        - Crime:
+            Offence: Murder
+            Sentence: Awaiting court appearance
+Segments:
+  - Segment:
+      Image: 
+      Text: |
+
+        A murder investigation into the death of Halyna Hoisan, a 29-year-old woman in Greenwich,
+        has led to the charge of 33-year-old Yurii Muzyka with murder.
+        
+        The incident occurred on Wednesday, 27 August, when police responded to reports of a stabbing 
+        at a residential address. Despite the efforts of emergency services, Halyna was pronounced 
+        dead at the scene. Her family is receiving support from specialist officers.
+        
+        Muzyka has been remanded in custody and is scheduled to appear at Bromley Magistrates’ Court 
+        on Saturday, 6 September.
+        
+        Like, subscribe and share if you find this information useful.

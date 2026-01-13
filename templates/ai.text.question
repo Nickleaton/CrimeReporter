@@ -1,0 +1,49 @@
+text
+===============
+{{ text }}
+===============
+
+Images
+===============
+{% for image in images %}
+{{ image }}
+{% endfor %}
+===============
+
+Summarise the story into the following yaml format
+
+===============
+{{ yaml }}
+===============
+
+Return the yaml format. Do not use redundant double quotes
+If you don't have information for a field, leave it blank or "" as appropriate
+
+Thumbnail text to be the same as the title
+Description is short. The summary in the segment is long.
+For the long text write over multiple lines
+Tags optimised for a youtube video
+
+Type should be Politics or Crime. If its about an offending police man, Police
+
+Don't ''' the answer
+
+This is an example of the formating for a Segments
+
+Segments:
+  - Segment:
+      Image: img.png
+      Text: |
+
+        A former South Wales Police sergeant, Ben Cooke, has been sentenced to six years and four months in prison
+        after pleading guilty to multiple offenses, including burglary, attempted burglary, theft, and police corruption.
+
+For the people mentioned, include them and the offences, sentences if known, with a role of Offender
+For the police include them with a role of Police
+For the victims include them with a role of Victim
+
+Take the text and use that to generate the yaml tags for youtube that optimises for views
+Include the name of any offenders as individual tags
+Include the location in the tags. If the location is Like Lancing Sussex, England, UK. Then one tag for each.
+In the tags include the name of the police force
+Include the Type in the tags

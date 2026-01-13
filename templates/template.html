@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border-top: 3px solid #444;
+            border-bottom: 3px solid #444;
+            padding: 1em 2em;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .meta {
+            font-size: 0.95em;
+            margin-top: 0.5em;
+        }
+
+        .meta div {
+            margin: 0.2em 0;
+        }
+
+        .content {
+            margin-top: 200px; /* adjust based on header height */
+            padding: 0 2em;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .article {
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .people-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .people-table th,
+        .people-table td {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            text-align: left;
+        }
+
+        .images img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 1em;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 90%;          /* make it wider */
+            max-width: 1000px;   /* limit max size */
+            margin: 2em auto;    /* center and add spacing */
+            padding-bottom: 50%; /* slightly taller */
+            height: 0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>{{ title }}</h1>
+    <div class="meta">
+        <div><strong>ID:</strong> {{ source_short_name }}/{{ identifier }}</div>
+        <div><strong>Date:</strong> {{ datetime }}</div>
+        <div><strong>Force:</strong> {{ source_name }}</div>
+        <div><strong>Url:</strong>
+            <!--suppress HtmlUnknownTarget -->
+            <a href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ url }}</a>
+        </div>
+    </div>
+    <div><strong>Output:</strong>
+        <!--suppress HtmlUnknownTarget -->
+        <a href="{{ output_directory }}" target="_blank" rel="noopener noreferrer">{{ output_directory }}</a>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="images">
+        {% for image in filenames %}
+            {% set filename = image.split('/')[-1] %}
+            {% set ext = filename.split('.')[-1].lower() %}
+            {% if ext in ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'] %}
+                <!--suppress HtmlUnknownTarget -->
+                <img src="{{ image }}" alt="{{ filename }}">
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="video">
+        {% if url and url.startswith("https://www.youtube.com/") %}
+            {% set video_id = "" %}
+            {% if "watch?v=" in url %}
+                {% set video_id = url.split("v=")[-1].split("&")[0] %}
+            {% elif "shorts/" in url %}
+                {% set video_id = url.split("shorts/")[-1].split("?")[0] %}
+            {% endif %}
+
+            {% if video_id %}
+                <div class="video-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/{{ video_id }}"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+
+    <div class="people">
+        <table class="people-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for person in people %}
+            <tr>
+                <td>{{ person }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="article">
+        {{ article }}
+    </div>
+</div>
+
+</body>
+</html>

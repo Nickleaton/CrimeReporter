@@ -1,0 +1,33 @@
+phonemes:
+  -  <sub alias="clue seau">Clouseau</sub>
+  - '<phoneme alphabet="x-sampa" ph="di: i: aI">DEI</phoneme>'
+  - <phoneme alphabet="x-sampa" ph="e.pe">Epee</phoneme>
+  - <phoneme alphabet="x-sampa" ph="tId vIl">Tydfil</phoneme>
+  - <phoneme alphabet="x-sampa" ph="wVn @U wVn">101</phoneme>
+  - <phoneme alphabet="x‑sampa" ph="mi:ə">Mia</phoneme>
+  - <sub alias="Applebee">Appleby</sub>
+  - <sub alias="Bondeye">Bondi</sub>
+  - <sub alias="Heartfordshire">Hertfordshire</sub>
+  - <sub alias="Is lington">Islington</sub>
+  - <sub alias="Jillingham">Gillingham</sub>
+  - <sub alias="Powis">Powys</sub>
+  - <sub alias="Sallsbree">Salisbury</sub>
+  - <sub alias="Sandy acre">Sandiacre</sub>
+  - <sub alias="Sargent">Sergeant</sub>
+  - <sub alias="Wollitch">Woolwich</sub>
+  - <sub alias="epay">epee</sub>
+  - <sub alias="grinder">Grindr</sub>
+  - <sub alias="jewfray">Giuffre</sub>
+  - <sub alias="parver">PAVA</sub>
+  - <sub alias="seamen">semen></sub>
+  - <sub alias="slave-er">slaver</sub>
+  - <sub alias="slaveree">slavery</sub>
+  - <sub alias="sudduck">Southwark</sub>
+  - <sub alias="tems">Thames</sub>
+  - Class <phoneme alphabet="x-sampa" ph="bi:">B</phoneme>
+  - Class <phoneme alphabet="x-sampa" ph="eI">A</phoneme>
+  - Class <phoneme alphabet="x-sampa" ph="si:">C</phoneme>
+  - category <phoneme alphabet="x-sampa" ph="eI">A</phoneme>
+  - colleague <phoneme alphabet="x-sampa" ph="bi:">B</phoneme>
+  - colleague <phoneme alphabet="x-sampa" ph="eI">A</phoneme>
+  - colleague <phoneme alphabet="x-sampa" ph="si:">B</phoneme>

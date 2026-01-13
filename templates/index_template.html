@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crime Reports</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #left {
+            width: 50%;
+            overflow-y: auto;
+            border-right: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        #right {
+            flex: 1;
+            padding: 0;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        td.date {
+            white-space: nowrap;
+        }
+
+        .icons {
+            display: flex;
+            gap: 5px;
+        }
+
+        a.icon {
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        a.icon:hover {
+            color: blue;
+        }
+
+        .sort-arrow {
+            margin-left: 4px;
+            white-space: nowrap;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div id="left">
+    <!-- Filter Inputs -->
+    <div style="margin-bottom: 10px;">
+        <label>
+            Date:
+            <input type="date" id="dateFilter" onkeyup="filterTable()">
+            <button type="button" onclick="changeDate(-1)" title="Previous day">◀</button>
+            <button type="button" onclick="changeDate(1)" title="Next day">▶</button>
+        </label>
+        <label style="margin-left: 10px;">
+            Source:
+            <select id="sourceFilter" onchange="filterTable()">
+                <option value="">All</option>
+                {% for source in sources %}
+                <option value="{{ source|lower }}">{{ source }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </div>
+
+    <table id="recordsTable">
+        <thead>
+        <tr>
+            <th onclick="sortTable(0)">Time <span class="sort-arrow">⬍</span></th>
+            <th onclick="sortTable(1)">Source <span class="sort-arrow">⬍</span></th>
+            <th onclick="sortTable(2)">Title <span class="sort-arrow">⬍</span></th>
+            <th>Actions</th>
+            <th>V</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rec in records %}
+        <tr>
+            <td class="date" data-datetime="{{ rec.timestamp }}">{{ rec.timestamp }}</td>
+            <td>{{ rec.source_name }}</td>
+            <td>{{ rec.title }}</td>
+            <td class="icons">
+                <!--suppress HtmlUnknownTarget -->
+                <a class="icon" target="_blank" href="{{ rec.url }}" title="Open remote">🌐</a>
+                <a class="icon" href="javascript:void(0)" onclick="showLocal('2026/{{ rec.filename }}')" title="Show local">📄</a>
+            </td>
+            <td>
+                {% if rec.url.startswith('https://www.youtube.com/') %}
+                    V
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div id="right">
+    <iframe id="viewer" src=""></iframe>
+</div>
+<script>
+    let sortDirection = {};
+    let lastSortedColumn = null;
+
+    function applySort(colIndex, ascending) {
+        const table = document.getElementById('recordsTable');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr')).filter(r => r.style.display !== 'none');
+
+        sortDirection[colIndex] = ascending;
+        lastSortedColumn = colIndex;
+
+        rows.sort((a, b) => {
+            let valA, valB;
+
+            if (colIndex === 0) {
+                valA = new Date(a.querySelector('td.date').getAttribute('data-datetime'));
+                valB = new Date(b.querySelector('td.date').getAttribute('data-datetime'));
+            } else {
+                valA = a.children[colIndex].textContent.trim().toLowerCase();
+                valB = b.children[colIndex].textContent.trim().toLowerCase();
+            }
+
+            if (valA < valB) return ascending ? -1 : 1;
+            if (valA > valB) return ascending ? 1 : -1;
+            return 0;
+        });
+
+        rows.forEach(row => tbody.appendChild(row));
+        updateHeaderIndicators(colIndex, ascending);
+    }
+
+    function sortTable(colIndex) {
+        const ascending = !(sortDirection[colIndex] ?? true);
+        applySort(colIndex, ascending);
+    }
+
+    function updateHeaderIndicators(activeIndex, ascending) {
+        const headers = document.querySelectorAll('#recordsTable th');
+        headers.forEach((th, i) => {
+            const arrow = th.querySelector('.sort-arrow');
+            if (arrow) arrow.textContent = (i === activeIndex) ? (ascending ? '▲' : '▼') : '⬍';
+        });
+    }
+
+    function filterTable() {
+        const dateInput = document.getElementById('dateFilter').value;
+        const sourceInput = document.getElementById('sourceFilter').value.toLowerCase();
+        const table = document.getElementById('recordsTable');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < rows.length; i++) {
+            const dateCell = rows[i].querySelector('td.date').getAttribute('data-datetime');
+            const sourceCell = rows[i].getElementsByTagName('td')[1].textContent.toLowerCase();
+
+            // ✅ Fixed precedence so both date AND source filters apply
+            rows[i].style.display = (dateCell.startsWith(dateInput) && (sourceInput === "" || sourceCell.includes(sourceInput))) ? '' : 'none';
+        }
+
+        if (lastSortedColumn !== null) {
+            applySort(lastSortedColumn, sortDirection[lastSortedColumn]);
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const dateFilter = document.getElementById('dateFilter');
+        dateFilter.value = new Date().toISOString().split('T')[0];
+
+        filterTable();
+        applySort(0, false); // Time descending
+
+        document.querySelectorAll('td.date').forEach(cell => {
+            const raw = cell.getAttribute('data-datetime');
+            const dt = new Date(raw);
+            if (!isNaN(dt.getTime())) {
+                cell.textContent = dt.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false});
+            }
+        });
+    });
+
+    function changeDate(offset) {
+        const dateInput = document.getElementById('dateFilter');
+        let currentDate = new Date(dateInput.value);
+
+        if (isNaN(currentDate.getTime())) currentDate = new Date();
+
+        currentDate.setDate(currentDate.getDate() + offset);
+        dateInput.value = currentDate.toISOString().split('T')[0];
+        filterTable();
+    }
+
+    function showLocal(filePath) {
+        document.getElementById('viewer').src = filePath;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+flag:
+  background: crimson
+  text_color: white
+  alignment: center
+  font_size: 60
+  font_path: arialbd.ttf
+  outline_color: black
+  outline_width: 0
+  width: 240
+  height: 80
+  text_margin: 10
+  inset_margin: 10
+  position: top_left
+banner:
+  width: 1280
+  height: 80
+  background: crimson
+  text_color: white
+  font_size: 60
+  alignment: center
+  text_margin: 10
+  font_path: arialbd.ttf
+  outline_color: black
+  outline_width: 0
+  position: bottom
+  inset_margin: 0
+video:
+  width: 1280
+  height: 720
+  background_color: grey
+logo:
+  size: 100
+  path: files/logo.svg
+  position: top_right
+  inset_margin: 10
+  color: orange
+audio:
+  language: en
+  engine: gTTS
+thumbnail:
+  width: 1280
+  height: 720
+  background_color: grey
+  logo:
+    size: 100
+    path: files/logo.svg
+    position: top_right
+    margin: 10
+    color: orange
+  title:
+    text_color: crimson
+    line_spacing: 30
+    font_path: arial.ttf
+    font_size: 80
+    outline_color: black
+    outline_width: 2
