@@ -25,8 +25,8 @@ class RegenerateCommand(Command):
     @staticmethod
     def articles() -> list[dict]:
         articles = []
-        for yaml_file in Path(config.downloads).glob("*/*/*/*/*/article.yaml"):
-            html_file = yaml_file.with_name("article.html").relative_to(config.downloads).as_posix()
+        for yaml_file in Path(config.root).glob("downloads/*/*/*/*/*/article.yaml"):
+            html_file = yaml_file.with_name("article.html").relative_to(Path(config.root) / 'downloads').as_posix()
 
             try:
                 with yaml_file.open(encoding="utf-8") as f:
@@ -60,7 +60,7 @@ class RegenerateCommand(Command):
         super().execute()
 
         records = self.articles()
-        output_csv = Path("caches") / "regenerated.csv"
+        output_csv = Path(config.root) / "caches/regenerated.csv"
         fieldnames = ["datetime", "title", "url", "source", "html"]
 
         # Ensure directory exists

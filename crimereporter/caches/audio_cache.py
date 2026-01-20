@@ -32,7 +32,7 @@ class AudioCache(BaseCache[AudioCacheRecord]):
 
     def __init__(self) -> None:
         super().__init__(
-            csv_file=Path(config.caches) / Path("audio.csv"),
+            csv_file=Path(config.root) / "caches/audio.csv",
             record_cls=AudioCacheRecord,
             key_field="composite_key",  # BaseCache will use this field as key
         )

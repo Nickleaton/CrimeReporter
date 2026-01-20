@@ -39,7 +39,7 @@ EXIT_PERMISSION_DENIED = 4
 EXIT_RUNTIME_ERROR = 5
 
 # Logging setup
-Path(config.logs).mkdir(exist_ok=True)
+Path(f"{config.root}/logs").mkdir(exist_ok=True)
 config = Config()
 logging.config.dictConfig(config.logging.to_dict())
 logger = logging.getLogger(__name__)
@@ -126,7 +126,7 @@ def build_commands(args):
         elif command_class is AITextCommand:
             commands.append(AITextCommand(args.script))
         else:
-            filename = Path(config.programs) / Path(f"Active/{args.program:05d}/script.yaml")
+            filename = Path(config.root) / f"programs/Active/{args.program:05d}/script.yaml"
             commands.append(command_class(filename, args.format))
 
     return commands

@@ -14,7 +14,7 @@ class TemplateCommand(Command):
         self.program = program
 
     def run(self) -> None:
-        programs = Path(config.programs)
+        programs = Path(config.root) / 'programs'
         script_path = Path("templates/script.yaml")
         active_dir = programs / "Active"
         path = active_dir / f"{self.program:05d}"

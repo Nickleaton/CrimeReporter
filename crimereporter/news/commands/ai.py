@@ -15,14 +15,14 @@ from crimereporter.utils.templates import env
 logger = logging.getLogger(__name__)
 ai_logger = logging.getLogger("call.logger.ai")
 config = Config()
-Path(config.logs).mkdir(parents=True, exist_ok=True)
+Path(f"{config.root}/log").mkdir(parents=True, exist_ok=True)
 
 
 class AICommand(Command, ABC):
     def __init__(self, script: int):
         super().__init__()
         self.script = script
-        self.script_directory = Path(config.programs) / Path(f"Active/{script:05d}")
+        self.script_directory = Path(config.root) / f"programs/Active/{script:05d}"
         self.target_file = self.script_directory / "script.yaml"
         self.question_file = self.script_directory / "question.txt"
         self.engine: AIEngine = AIEngine.create(config.ai_command)
@@ -78,7 +78,7 @@ class AIDownloadCommand(AICommand):
         self.source_directory = self.source_yaml_filename.parent
 
     def get_yaml_file_name(self) -> Path:
-        downloads_path = Path(config.downloads)
+        downloads_path = Path(config.root) / "downloads"
         pattern = f"*/*/*/{self.force}/{self.id}/article.yaml"
         files = list(downloads_path.glob(pattern))
 

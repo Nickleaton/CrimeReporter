@@ -21,7 +21,7 @@ class YouTubeClient:
     def __init__(
         self,
         secrets_file: Path,
-        token_file: Path = Path(config.keys_directory) / Path("token.pkl"),
+        token_file: Path = Path(config.root) / "keys/token.pkl",
     ) -> None:
         self.secrets_file = secrets_file
         self.token_file = token_file

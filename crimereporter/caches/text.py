@@ -15,5 +15,5 @@ class TextCacheRecord:
 
 class TextCache(BaseCache[TextCacheRecord]):
 
-    def __init__(self, cache_file: Path = Path(config.caches) / Path("youtube_text.csv")):
+    def __init__(self, cache_file: Path = Path(config.root) / "caches/youtube_text.csv"):
         super().__init__(csv_file=cache_file, record_cls=TextCacheRecord, key_field="video_id")

@@ -24,7 +24,7 @@ class CommitCommand(Command):
         directory using Git, with a timestamped commit message.
         """
         super().execute()
-        subdir: str = config.downloads
+        subdir: str = config.root + "/downloads"
         iso_time: str = datetime.now().isoformat(timespec="seconds")
         commit_message: str = f"Download {iso_time}"
 

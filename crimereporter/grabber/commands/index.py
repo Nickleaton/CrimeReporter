@@ -31,7 +31,7 @@ class IndexCommand(Command):
         """
         super().execute()
 
-        output_html: Path = Path(config.downloads) / Path("index.html")
+        output_html: Path =Path(config.root) / "downloads/index.html"
         template = env.get_template("index_template.html")
 
         html_content = template.render(records=Cache().records(), sources=Source.shortnames())

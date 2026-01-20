@@ -6,8 +6,8 @@ config = Config()
 
 
 class Directories:
-    ACTIVE_DIRECTORY = Path(config.programs) / Path("Active")
-    ARCHIVE_DIRECTORY = Path(config.programs) / Path("Archive")
+    ACTIVE_DIRECTORY = Path(config.root) / "programs/Active"
+    ARCHIVE_DIRECTORY = Path(config.root) / "programs/Archive"
 
     @staticmethod
     def get_programs_from_directory(search_dir: Path) -> list[int]:
@@ -16,7 +16,9 @@ class Directories:
         if not search_dir.is_dir():
             raise NotADirectoryError(f"{search_dir} is not a valid directory.")
 
-        numeric_dirs = [int(d.name) for d in search_dir.iterdir() if d.is_dir() and d.name.isdigit()]
+        numeric_dirs = [
+            int(d.name) for d in search_dir.iterdir() if d.is_dir() and d.name.isdigit()
+        ]
         return sorted(numeric_dirs)
 
     @staticmethod

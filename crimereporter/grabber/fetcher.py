@@ -32,7 +32,7 @@ class Fetcher:
     @staticmethod
     def storage_file_for_url(url: str) -> Path:
         hostname = urlparse(url).hostname
-        return Path(config.local_storage) / f"{hostname}.json"
+        return Path(config.root) / f"local_storage/{hostname}.json"
 
     @staticmethod
     def user_agent():

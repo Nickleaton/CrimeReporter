@@ -14,5 +14,5 @@ class MetadataCacheRecord:
 
 
 class MetadataCache(BaseCache[MetadataCacheRecord]):
-    def __init__(self, cache_file: Path = Path(config.caches) / Path("youtube_metadata.csv")):
+    def __init__(self, cache_file: Path = Path(config.root) / "caches/youtube_metadata.csv"):
         super().__init__(csv_file=cache_file, record_cls=MetadataCacheRecord, key_field="video_id")

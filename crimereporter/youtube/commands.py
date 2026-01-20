@@ -58,7 +58,7 @@ class YoutubeCommand(SimpleCommand):
     @staticmethod
     def get_credentials() -> Credentials:
         """Load or refresh YouTube API credentials."""
-        token_file = Path(config.keys_directory) / Path("token.pkl")
+        token_file = Path(config.root) / "keys/token.pkl"
         creds: Optional[Credentials] = None
 
         if token_file.exists():

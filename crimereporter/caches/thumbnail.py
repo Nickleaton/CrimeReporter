@@ -15,5 +15,5 @@ class ThumbnailCacheRecord:
 
 class ThumbnailCache(BaseCache[ThumbnailCacheRecord]):
 
-    def __init__(self, cache_file: Path = Path(config.caches) / Path("youtube_thumbnail.csv")):
+    def __init__(self, cache_file: Path = Path(config.root) / "caches/youtube_thumbnail.csv"):
         super().__init__(csv_file=cache_file, record_cls=ThumbnailCacheRecord, key_field="video_id")

@@ -1,5 +1,5 @@
 moveable:
-  - caches
+#  - caches
   - downloads
   - programs
   - keys_directory
@@ -17,12 +17,13 @@ moveable:
 
 
 
-caches: caches
-downloads: downloads
-keys_directory: keys
-local_storage: local_storage
-logs: logs
-programs: programs
+root: D:\PycharmProjects\CrimeReportData
+#caches: caches
+#downloads: downloads
+#keys_directory: keys
+#local_storage: local_storage
+#logs: logs
+#programs: programs
 #target: D:\PycharmProjects\CrimeReportData
 logging:
   version: 1
@@ -95,6 +96,12 @@ log:
   max_lines: 10000
   launcher_log: logs/launcher.log
 phonemes:
+  - phoneme:
+      source: Suriname
+      target: <sub alias="Surinam">Suriname</sub>
+  - phoneme:
+      source: Paedo
+      target: <sub alias="peedo">Paedo</sub>
   - phoneme:
       source: Seat
       target: <sub alias="sea-at">Seat</sub>

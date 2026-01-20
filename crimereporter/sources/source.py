@@ -262,8 +262,8 @@ class Source(ABC, metaclass=SourceMeta):
         Returns:
             list[Path]: list of Paths to raw HTML files.
         """
-        glob_string: str = f"*/*/*/{self.directory}/*/raw.html"
-        return list(Path(config.downloads).glob(glob_string))
+        glob_string: str = f"downloads/*/*/*/{self.directory}/*/raw.html"
+        return list(Path(config.root).glob(glob_string))
 
     @abstractmethod
     def extract(self, text: str, identifier: str) -> Article:

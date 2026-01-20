@@ -73,7 +73,7 @@ class Article:
             Path: A directory path in the format:
                 downloads/year/month/day/source_name/identifier
         """
-        return Path(config.downloads) / self.relative_directory()
+        return Path(config.root) / "downloads" /  self.relative_directory()
 
     def relative_directory(self) -> Path:
         """Constructs a relative directory path based on the article metadata."""

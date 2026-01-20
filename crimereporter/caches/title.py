@@ -14,5 +14,5 @@ class TitleCacheRecord:
 
 
 class TitleCache(BaseCache[TitleCacheRecord]):
-    def __init__(self, cache_file: Path = Path(config.caches) / Path("youtube_title_to_id.csv")):
+    def __init__(self, cache_file: Path = Path(config.root) / "caches/youtube_title_to_id.csv"):
         super().__init__(csv_file=cache_file, record_cls=TitleCacheRecord, key_field="title")

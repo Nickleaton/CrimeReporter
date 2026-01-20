@@ -40,7 +40,7 @@ class Cache:
     csv_file: Path
     cache: Dict[str, CacheRecord]
 
-    def __init__(self, csv_file: Path = Path(config.caches) / Path("cache.csv")) -> None:
+    def __init__(self, csv_file: Path = Path(config.root) / "caches/cache.csv") -> None:
         # Only load message_cache once per singleton instance
         if hasattr(self, "_initialized") and self._initialized:
             return

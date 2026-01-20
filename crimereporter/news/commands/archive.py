@@ -8,12 +8,11 @@ config = Config()
 
 
 class ArchiveCommand(Command):
-
     def run(self) -> None:
         logger.info("Archiving")
 
-        ACTIVE_DIRECTORY = Path(config.programs) / Path("Active")
-        ARCHIVE_DIRECTORY = Path(config.programs) / Path("Archive")
+        ACTIVE_DIRECTORY = Path(config.root) / "programs/Active"
+        ARCHIVE_DIRECTORY = Path(config.root) / "programs/Archive"
 
         # Ensure the archive directory exists
         ARCHIVE_DIRECTORY.mkdir(parents=True, exist_ok=True)

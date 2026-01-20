@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 call_logger = logging.getLogger("call.logger.youtube")
 
 config = Config()
-playlist_cache = PlaylistCache(Path(config.caches) / Path("playlist_cache.csv"))
+playlist_cache = PlaylistCache(Path(config.root) / "caches/playlist_cache.csv")
 
 
 class UpdatePlaylistCommand(YoutubeCommand):

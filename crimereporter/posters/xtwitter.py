@@ -20,7 +20,7 @@ class XPoster(Poster):
 
     def __init__(self):
         super().__init__()
-        creds_path = Path(config.keys_directory) / Path("x.yaml")
+        creds_path = Path(config.root) / "keys/x.yaml"
         creds = yaml.safe_load(creds_path.read_text(encoding="utf-8"))
 
         required = {

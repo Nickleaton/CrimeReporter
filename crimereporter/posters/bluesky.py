@@ -23,7 +23,7 @@ class BlueskyPoster(Poster):
     def __init__(self):
         super().__init__()
         self.api = Client()
-        creds_path = Path(config.keys_directory) / Path("bluesky.yaml")
+        creds_path = Path(config.root) / "root/bluesky.yaml"
         creds = yaml.safe_load(creds_path.read_text(encoding="utf-8"))
         self.api.login(creds["username"], creds["password"])
         self.message_cache = MessageCache(Path("caches") / f"{self.name}_messages.csv")
