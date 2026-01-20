@@ -15,7 +15,7 @@ from crimereporter.utils.templates import env
 logger = logging.getLogger(__name__)
 ai_logger = logging.getLogger("call.logger.ai")
 config = Config()
-Path(f"{config.root}/log").mkdir(parents=True, exist_ok=True)
+Path(f"{Path(config.root)}/log").mkdir(parents=True, exist_ok=True)
 
 
 class AICommand(Command, ABC):

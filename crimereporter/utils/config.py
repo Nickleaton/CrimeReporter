@@ -132,54 +132,7 @@ class Config(ConfigBase):
         except KeyError:
             raise RuntimeError("CRIMEREPORTER environment variable is not set")
 
-        # ---- apply moveable paths ----
-        self.apply_moveable_paths()
-
         self.__initialized = True
-
-    # --------------------------------------------------
-
-    def apply_moveable_paths(self):
-        moveable = self._data.get("moveable", [])
-
-        for dotted_path in moveable:
-            self.prepend_data_root(dotted_path)
-
-    def prepend_data_root(self, dotted_path: str):
-        keys = dotted_path.split(".")
-        self.resolve_and_patch(self._data, keys)
-
-    def resolve_and_patch(self, node, keys):
-        if not keys:
-            return
-
-        key = keys[0]
-        rest = keys[1:]
-
-        if isinstance(node, dict):
-            if key not in node:
-                return
-
-            # Leaf value
-            if len(rest) == 0:
-                value = node[key]
-
-                if not isinstance(value, str):
-                    return
-
-                value_path = Path(value)
-                if value_path.is_absolute():
-                    return
-
-                node[key] = str(self.data_root / value_path)
-                return
-
-            self.resolve_and_patch(node[key], rest)
-
-        elif isinstance(node, list):
-            for item in node:
-                self.resolve_and_patch(item, keys)
-
 
 class FormatsConfig(ConfigBase):
     """Configuration for formats, sharing the same base logic."""

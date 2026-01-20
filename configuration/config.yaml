@@ -1,30 +1,4 @@
-moveable:
-#  - caches
-  - downloads
-  - programs
-  - keys_directory
-  - local_storage
-  - logs
-  - programs
-  - log.launcher_log
-  - youtube_secrets
-  - speech_to_text
-  - engines.engine.open_ai_api_key_file
-  - logging.handlers.youtube_file.filename
-  - logging.handlers.audio_file.filename
-  - logging.handlers.ai_file.filename
-  - logging.handlers.youtube_file.filename
-
-
-
 root: D:\PycharmProjects\CrimeReportData
-#caches: caches
-#downloads: downloads
-#keys_directory: keys
-#local_storage: local_storage
-#logs: logs
-#programs: programs
-#target: D:\PycharmProjects\CrimeReportData
 logging:
   version: 1
   disable_existing_loggers: false
@@ -41,19 +15,19 @@ logging:
       class: logging.FileHandler
       formatter: default
       level: INFO
-      filename: logs/youtube.log
+      filename: D:/PycharmProjects/CrimeReportData/logs/youtube.log
       encoding: utf-8
     audio_file: # <-- new handler
       class: logging.FileHandler
       formatter: default
       level: INFO
-      filename: logs/audio.log
+      filename: D:/PycharmProjects/CrimeReportData/logs/audio.log
       encoding: utf-8
     ai_file: # <-- new handler for AI calls
       class: logging.FileHandler
       formatter: default
       level: INFO
-      filename: logs/ai.log
+      filename: D:/PycharmProjects/CrimeReportData/logs/ai.log
       encoding: utf-8
   root:
     level: INFO

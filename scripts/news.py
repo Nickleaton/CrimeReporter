@@ -39,7 +39,7 @@ EXIT_PERMISSION_DENIED = 4
 EXIT_RUNTIME_ERROR = 5
 
 # Logging setup
-Path(f"{config.root}/logs").mkdir(exist_ok=True)
+Path(f"{Path(config.root)}/logs").mkdir(exist_ok=True)
 config = Config()
 logging.config.dictConfig(config.logging.to_dict())
 logger = logging.getLogger(__name__)

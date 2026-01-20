@@ -1,4 +1,5 @@
 from datetime import datetime
+from pathlib import Path
 
 from git import Repo
 
@@ -24,7 +25,7 @@ class CommitCommand(Command):
         directory using Git, with a timestamped commit message.
         """
         super().execute()
-        subdir: str = config.root + "/downloads"
+        subdir: Path = Path(config.root) / "downloads"
         iso_time: str = datetime.now().isoformat(timespec="seconds")
         commit_message: str = f"Download {iso_time}"
 
