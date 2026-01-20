@@ -197,14 +197,14 @@ youtube:
   sleep_after_upload: 15
 bluesky:
   maximum_image_size: 1000000
-youtube_secrets: keys/youtube_secrets.json
-speech_to_text: keys/tts-key.json
+#youtube_secrets: keys/youtube_secrets.json
+#speech_to_text: keys/tts-key.json
 ai_command: Ollama
 extractor: Trafilatura
 engines:
   - engine:
       name: OpenAI
-      open_ai_api_key_file: keys/openai.json
+#      open_ai_api_key_file: keys/openai.json
       model: gpt-4o-mini
   - engine:
       name: Ollama

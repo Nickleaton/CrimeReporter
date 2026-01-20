@@ -1,6 +1,7 @@
 import logging
 import re
 from io import BytesIO
+from pathlib import Path
 
 from google.cloud import texttospeech
 from google.cloud.texttospeech_v1 import SsmlVoiceGender
@@ -21,7 +22,8 @@ class GCPTextToSpeechRenderer(AudioRenderer):
 
     def __init__(self) -> None:
         super().__init__()
-        self.client = texttospeech.TextToSpeechClient.from_service_account_file(config.speech_to_text)
+        key_file = f'{config.root}/keys/tts-key.json'
+        self.client = texttospeech.TextToSpeechClient.from_service_account_file(key_file)
 
     def clean(self, text: str) -> str:
         phonemes = getattr(config, "phonemes", None)

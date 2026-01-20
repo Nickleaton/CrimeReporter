@@ -69,7 +69,8 @@ class YoutubeCommand(SimpleCommand):
             if creds and creds.expired and creds.refresh_token:
                 creds.refresh(Request())
             else:
-                flow = InstalledAppFlow.from_client_secrets_file(config.youtube_secrets, SCOPES)
+                key_file = f'{config.root}/keys/youtube_secrets.json'
+                flow = InstalledAppFlow.from_client_secrets_file(key_file, SCOPES)
                 creds = flow.run_local_server(port=0)
             with token_file.open("wb") as f:
                 # call_logger.info(f"Saving credentials to {token_file}")
