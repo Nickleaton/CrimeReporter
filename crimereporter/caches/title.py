@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 
-from crimereporter.caches.cache import BaseCache
+from crimereporter.caches.csv_cache import CSVCache
 from crimereporter.utils.config import Config
 
 config = Config()
@@ -13,6 +13,10 @@ class TitleCacheRecord:
     video_id: str
 
 
-class TitleCache(BaseCache[TitleCacheRecord]):
-    def __init__(self, cache_file: Path = Path(config.root) / "caches/youtube_title_to_id.csv"):
-        super().__init__(csv_file=cache_file, record_cls=TitleCacheRecord, key_field="title")
+class TitleCache(CSVCache[TitleCacheRecord]):
+    def __init__(
+        self, cache_file: Path = Path(config.root) / "caches/youtube_title_to_id.csv"
+    ):
+        super().__init__(
+            csv_file=cache_file, record_cls=TitleCacheRecord, key_field="title"
+        )

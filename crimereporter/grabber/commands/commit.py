@@ -25,11 +25,13 @@ class CommitCommand(Command):
         directory using Git, with a timestamped commit message.
         """
         super().execute()
-        subdir: Path = Path(config.root) / "downloads"
+        downloads: Path = Path(config.root) / "downloads"
+        programs: Path = Path(config.root) / "programs"
         iso_time: str = datetime.now().isoformat(timespec="seconds")
         commit_message: str = f"Download {iso_time}"
 
-        self.repo.git.add(subdir)
+        self.repo.git.add(downloads)
+        self.repo.git.add(programs)
 
         if self.repo.index.diff("HEAD") or self.repo.untracked_files:
             self.repo.git.commit("-m", commit_message, "--no-verify")

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 
-from crimereporter.caches.cache import BaseCache
+from crimereporter.caches.csv_cache import CSVCache
 from crimereporter.utils.config import Config
 from crimereporter.utils.singleton import singleton
 
@@ -27,7 +27,7 @@ class AudioCacheRecord:
 
 
 @singleton
-class AudioCache(BaseCache[AudioCacheRecord]):
+class AudioCache(CSVCache[AudioCacheRecord]):
     """Cache for audio segments supporting composite keys."""
 
     def __init__(self) -> None:
