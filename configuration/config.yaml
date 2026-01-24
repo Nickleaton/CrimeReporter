@@ -1,4 +1,5 @@
 root: D:\PycharmProjects\CrimeReportData
+database_url: sqlite:///cache.db
 logging:
   version: 1
   disable_existing_loggers: false
@@ -70,6 +71,9 @@ log:
   max_lines: 10000
   launcher_log: logs/launcher.log
 phonemes:
+  - phoneme:
+      source: Smethwick
+      target: <sub alias="Smethick">Semthwick</sub>
   - phoneme:
       source: Suriname
       target: <sub alias="Surinam">Suriname</sub>
