@@ -1,0 +1,101 @@
+Date
+===============
+
+===============
+
+Title
+===============
+Appeal for information after abuse and threats at hospital in Birmingham
+===============
+
+Source
+===============
+WMid
+===============
+
+text
+===============
+Do you recognise this man?
+We're looking to speak to him after an incident at a hospital in Birmingham.
+At around 4pm on 14 January, a man entered Heartlands Hospital where he began shouting racist abuse at several people and making threats.
+Officers investigating the incident are keen to speak to this man and find out more about what happened.
+If you recognise him, or were there when it happened, call 101 quoting crime number 20/113352/26.
+===============
+
+url
+===============
+https://www.westmidlands.police.uk/news/west-midlands/news/news/2026/february/appeal-for-information-after-abuse-and-threats-at-hospital-in-birmingham/
+===============
+
+id
+===============
+1678774
+===============
+
+Files
+===============
+
+heartlands-wm.jpg
+
+===============
+
+Summarise the story into the following yaml format
+
+===============
+Source:
+Id:
+Type: # Politics or Crime or Police if its a bad police officer
+Date:  # in format YYYY-MM-DD
+Title:
+URL:
+Thumbnail:  # URL to thumbnail image
+Location:  # e.g., "North Rhine-Westphalia, Germany"
+Tags:  # list of tags
+  - tag a
+  - tag b
+Description:  # full description of the news or content
+People:
+  - Person:
+      Name:
+      Nationality: Unknown
+      Age:  # if known. If not leave off
+      DateOfBirth: # if known. If not leave off
+      Gender: # Male or Female or Unknown
+      Role: # Offender or Victim
+      Crimes:  # if you know what they are. Charged, or awaiting sentence is acceptable here
+        - Crime:
+            Offence:
+            Sentence: # if you know what they are. Charged, or awaiting sentence is acceptable here
+Segments:
+  - Segment:
+      Image: name of image
+      Text: |
+        
+        Summary of story goes here
+        
+        Like, subscribe and share if you find this information useful.
+===============
+
+Return the yaml format unquoted.
+For the title and thumbnail text, make it under 50 characters. Name of the main offender and their crime. If just a victim, then their name and the offence against them.
+
+Thumbnail text to be the same as the title
+Description is short. The summary in the segment is long.
+For the long text write over multiple lines
+Tags optimised for a youtube video
+
+Type should be Politics or Crime. If its about an offending police man, Police
+
+Don't use triple single quotes in the answer.
+
+for the thumbnail image pick the most likely file in files to contain the image of the offender
+
+For the people mentioned, include them and the offences, sentences if known, with a role of Offender
+Do not include the police in the list.
+For the victims include them with a role of Victim if you know their names
+
+Take the text and use that to generate the yaml tags for youtube that optimises for views
+Include the name of any offenders as individual tags
+Include the location in the tags. If the location is Like Lancing Sussex, England, UK. Then one tag for each.
+In the tags include the name of the police force
+Include the Type in the tags

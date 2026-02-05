@@ -1,0 +1,105 @@
+Date
+===============
+
+===============
+
+Title
+===============
+Inmate sentenced for prison officer attack
+===============
+
+Source
+===============
+Staffs
+===============
+
+text
+===============
+A prison inmate has been handed more jail time after being found guilty of seriously assaulting an officer at HMP Dovegate.
+Daouda Sy, aged 28, formerly of Redditch, refused to appear for sentencing via video-link at Stoke-on-Trent Crown Court yesterday (Tuesday 3 February), after he was convicted following trial of wounding with intent, relating to an attack that took place in January 2023.
+Despite his refusal, Sy was handed a further jail term of seven and a half years with an extended licence period of five years; a total sentence of 12.5 years.
+Sy had been handed a 12-year jail term in 2022 after he was convicted of carrying out an unprovoked machete attack on a member of the public in Sheffield in 2019.
+He was further convicted, later the same year, of a prison officer assault and was found guilty of the latest assault following a trial in December last year.
+In the 2023 assault, a prison officer suffered life-threatening injuries to his face, right eye, head and neck after Sy refused to calm down and return to his cell when asked, following an altercation with another inmate.
+The victim had to be treated in hospital following the assault.
+Sy has since been moved to another prison.
+Speaking following sentencing, prison crime investigator from our crime investigation department (CID), Aimi Hanlon, said: “Sy launched this violent, unprovoked and sustained attack on the officer who was merely trying to do his job.
+“Everyone deserves to feel safe at their place of work and prison officers are no different.
+“I am pleased that Sy has been handed a significant additional custodial sentence for his offending and hope this shows how we will continue to pursue individuals intent on violence whether they’re out in the community or behind bars.”
+===============
+
+url
+===============
+https://www.staffordshire.police.uk/news/staffordshire/news/2026/february/inmate-sentenced-for-prison-officer-attack/
+===============
+
+id
+===============
+1678763
+===============
+
+Files
+===============
+
+===============
+
+Summarise the story into the following yaml format
+
+===============
+Source:
+Id:
+Type: # Politics or Crime or Police if its a bad police officer
+Date:  # in format YYYY-MM-DD
+Title:
+URL:
+Thumbnail:  # URL to thumbnail image
+Location:  # e.g., "North Rhine-Westphalia, Germany"
+Tags:  # list of tags
+  - tag a
+  - tag b
+Description:  # full description of the news or content
+People:
+  - Person:
+      Name:
+      Nationality: Unknown
+      Age:  # if known. If not leave off
+      DateOfBirth: # if known. If not leave off
+      Gender: # Male or Female or Unknown
+      Role: # Offender or Victim
+      Crimes:  # if you know what they are. Charged, or awaiting sentence is acceptable here
+        - Crime:
+            Offence:
+            Sentence: # if you know what they are. Charged, or awaiting sentence is acceptable here
+Segments:
+  - Segment:
+      Image: name of image
+      Text: |
+        
+        Summary of story goes here
+        
+        Like, subscribe and share if you find this information useful.
+===============
+
+Return the yaml format unquoted.
+For the title and thumbnail text, make it under 50 characters. Name of the main offender and their crime. If just a victim, then their name and the offence against them.
+
+Thumbnail text to be the same as the title
+Description is short. The summary in the segment is long.
+For the long text write over multiple lines
+Tags optimised for a youtube video
+
+Type should be Politics or Crime. If its about an offending police man, Police
+
+Don't use triple single quotes in the answer.
+
+for the thumbnail image pick the most likely file in files to contain the image of the offender
+
+For the people mentioned, include them and the offences, sentences if known, with a role of Offender
+Do not include the police in the list.
+For the victims include them with a role of Victim if you know their names
+
+Take the text and use that to generate the yaml tags for youtube that optimises for views
+Include the name of any offenders as individual tags
+Include the location in the tags. If the location is Like Lancing Sussex, England, UK. Then one tag for each.
+In the tags include the name of the police force
+Include the Type in the tags

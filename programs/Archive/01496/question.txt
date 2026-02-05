@@ -1,0 +1,122 @@
+Date
+===============
+
+===============
+
+Title
+===============
+Drug Dealer Ordered to Pay Back Nearly £400k
+===============
+
+Source
+===============
+WYP
+===============
+
+text
+===============
+Tuesday 3 February, 2026
+A convicted drug dealer has been ordered to pay back nearly £400k or face an additional jail term.
+A Proceeds of Crime Act (POCA) hearing was held at Leeds Crown Court on Monday (2 February) where
+Curtis Clark, 25, was ordered to pay back £393,363.77 within three months of face a further four
+years in prison.
+Curtis was sentenced to 65 months imprisonment in August last year after pleading guilty to being
+concerned in the supply of Class A and B drugs and money laundering. He was linked to an organised
+crime group who had control of a drug dealing line responsible for the sale of large quantities of
+drugs throughout Leeds and West Yorkshire.
+His arrest followed search warrants being executed in November 2024 at his home address in the
+Whitkirk area of Leeds and other premises he had control over. During these searches in excess of
+£270k in cash, two motor vehicles, a large amount of designer clothing and three Rolex watches
+valued at £100k were all recovered.
+Detective Inspector Alastair Nicholls said: “Organised criminality is a blight on our communities,
+with individuals like Curtis preying on the vulnerability of others for their own gain.
+“When Curtis was sentenced, the court heard how he ‘loved the lifestyle’ with his Rolexes and fast
+cars. This POCA hearing has ensured that on his release from prison, he will not be returning to
+that lifestyle. Instead, his assets will be sold and the money recovered will go towards projects to
+disrupt criminality and build communities.
+“I hope this action sends the message that if you are profiting from crime then we will not only
+look to arrest and charge you, but we will also use all available powers to strip you of any wealth
+you have gained from your illegal activities.”
+===============
+
+url
+===============
+https://www.westyorkshire.police.uk/news-appeals/drug-dealer-ordered-pay-back-nearly-ps400k
+===============
+
+id
+===============
+198046
+===============
+
+Files
+===============
+
+Latest%20update%2003.png
+
+cash_0.jpg
+
+curtis_clark_1.jpg
+
+===============
+
+Summarise the story into the following yaml format
+
+===============
+Source:
+Id:
+Type: # Politics or Crime or Police if its a bad police officer
+Date:  # in format YYYY-MM-DD
+Title:
+URL:
+Thumbnail:  # URL to thumbnail image
+Location:  # e.g., "North Rhine-Westphalia, Germany"
+Tags:  # list of tags
+  - tag a
+  - tag b
+Description:  # full description of the news or content
+People:
+  - Person:
+      Name:
+      Nationality: Unknown
+      Age:  # if known. If not leave off
+      DateOfBirth: # if known. If not leave off
+      Gender: # Male or Female or Unknown
+      Role: # Offender or Victim
+      Crimes:  # if you know what they are. Charged, or awaiting sentence is acceptable here
+        - Crime:
+            Offence:
+            Sentence: # if you know what they are. Charged, or awaiting sentence is acceptable here
+Segments:
+  - Segment:
+      Image: name of image
+      Text: |
+        
+        Summary of story goes here
+        
+        Like, subscribe and share if you find this information useful.
+===============
+
+Return the yaml format unquoted.
+For the title and thumbnail text, make it under 50 characters. Name of the main offender and their crime. If just a victim, then their name and the offence against them.
+
+Thumbnail text to be the same as the title
+Description is short. The summary in the segment is long.
+For the long text write over multiple lines
+Tags optimised for a youtube video
+
+Type should be Politics or Crime. If its about an offending police man, Police
+
+Don't use triple single quotes in the answer.
+
+for the thumbnail image pick the most likely file in files to contain the image of the offender
+
+For the people mentioned, include them and the offences, sentences if known, with a role of Offender
+Do not include the police in the list.
+For the victims include them with a role of Victim if you know their names
+
+Take the text and use that to generate the yaml tags for youtube that optimises for views
+Include the name of any offenders as individual tags
+Include the location in the tags. If the location is Like Lancing Sussex, England, UK. Then one tag for each.
+In the tags include the name of the police force
+Include the Type in the tags

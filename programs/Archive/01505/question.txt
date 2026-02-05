@@ -1,0 +1,125 @@
+Date
+===============
+
+===============
+
+Title
+===============
+Man sentenced to prison for causing death by dangerous driving – Beaconsfield
+===============
+
+Source
+===============
+Thames
+===============
+
+text
+===============
+A man who ran from the scene of a fatal collision has today (4/2) been jailed for causing death by dangerous driving and causing serious injury by dangerous driving on the M40 near Beaconsfield.
+Trad Almaghrabi, aged 24, of Harlington Road, Uxbridge, pleaded guilty to both offences in a hearing at Aylesbury Crown Court on 30 October 2025.
+Returning to the same court today, Almaghrabi was jailed for ten years for causing death by dangerous driving and a further two years for causing serious injury by dangerous driving, the sentences to run concurrently.
+He was also disqualified from driving for 11 years and eight months, and must take an extended re-test before regaining his licence.
+A forfeiture and destruction order was made for his car, and he must pay £1,000 in costs.
+At just before 1.15am on 12 July last year, Almaghrabi was driving a blue Mercedes AMG C250.
+He was witnessed purchasing alcohol during the evening from the Coach & Horses public House in Uxbridge, before he left the pub with three occupants at around 12.40am.
+His car was witnessed being driven dangerously and at excessive speed from Uxbridge and onto the northbound section of the M40, with witnesses saying Almaghrabi was driving in excess of the speed limit.
+As he approached junction 2 of the M40, under illuminated speed limit of 50mph due to roadworks, Almaghrabi struck the rear of a Volkswagen Golf, being driving in the same direction by 27-year-old Naweed Hussain.
+Naweed was travelling home after working at a charity football event, and the force of the collision saw him killed instantly.
+His front seat passenger, man aged in his twenties, also suffered serious injuries, including fractured vertebrae, cracked ribs, bleeding on the lungs and an injured wrist.
+He was treated in hospital and is slowly recovering.
+Within seconds of the collision, Almaghrabi left the scene of the collision, walking up the slip road towards Beaconsfield Services.
+CCTV footage from the service station showed Almaghrabi making off away from the scene.
+Attending officers at the scene of the collision located a Nitrous Oxide canister in the car and cannabis and a grinder under the Mercedes, which was forensically linked to Almaghrabi.
+He was subsequently identified as the driver by police who sought to arrest him, and Almaghrabi handed himself in at Wycombe police station on the evening of Saturday 12 July.
+He was charged with the offences on 14 July and was bailed to appear at Aylesbury Crown Court on 30 October, when he pleaded guilty.
+Forensic collision examination of the scene and vehicles established that immediately prior to the collision, Almaghrabi was driving his car at speeds between 135mph and 146mph.
+Lead investigator Sergeant Ed Crofts of the Serious Collision Investigation Unit said: “This was a truly shocking collision, and the speeds at which Almaghrabi was driving just prior to the collision beggar belief.
+“The fact that he then took the cowardly decision to run from the scene shows the complete disregard that he had for the two victims in this case, leaving Naweed for dead and his passenger with extensive serious multiple injuries.
+“Throughout the course of this investigation, Naweed's family have remained completely dignified and patient while we brought the evidence to court.
+“No outcome in court can ever lessen the pain and suffering that they have endured since Naweed died, but I hope that this court outcome can allow them some sense of justice.
+“Driving at the speeds Almaghrabi was doing had catastrophic effects, and I am satisfied that the courts have recognised the serious consequences of his actions with this prison sentence.
+“Speeding is one of the fatal four, and we will always look to take action against those who flout the laws on our roads.
+“My thoughts and the thoughts of all of us at Thames Valley Police remain with the family and friends of Naweed, and I hope that they can move on with their lives in the best way possible.”
+KB
+KB
+Trad Almaghrabi
+Trad Almaghrabi
+===============
+
+url
+===============
+https://www.thamesvalley.police.uk/news/thames-valley/news/2026/february/02-02-26/man-sentenced-to-prison-for-causing-death-by-dangerous-driving--beaconsfield/
+===============
+
+id
+===============
+1678677
+===============
+
+Files
+===============
+
+20260204-trad-almaghrabi-full-size.png
+
+===============
+
+Summarise the story into the following yaml format
+
+===============
+Source:
+Id:
+Type: # Politics or Crime or Police if its a bad police officer
+Date:  # in format YYYY-MM-DD
+Title:
+URL:
+Thumbnail:  # URL to thumbnail image
+Location:  # e.g., "North Rhine-Westphalia, Germany"
+Tags:  # list of tags
+  - tag a
+  - tag b
+Description:  # full description of the news or content
+People:
+  - Person:
+      Name:
+      Nationality: Unknown
+      Age:  # if known. If not leave off
+      DateOfBirth: # if known. If not leave off
+      Gender: # Male or Female or Unknown
+      Role: # Offender or Victim
+      Crimes:  # if you know what they are. Charged, or awaiting sentence is acceptable here
+        - Crime:
+            Offence:
+            Sentence: # if you know what they are. Charged, or awaiting sentence is acceptable here
+Segments:
+  - Segment:
+      Image: name of image
+      Text: |
+        
+        Summary of story goes here
+        
+        Like, subscribe and share if you find this information useful.
+===============
+
+Return the yaml format unquoted.
+For the title and thumbnail text, make it under 50 characters. Name of the main offender and their crime. If just a victim, then their name and the offence against them.
+
+Thumbnail text to be the same as the title
+Description is short. The summary in the segment is long.
+For the long text write over multiple lines
+Tags optimised for a youtube video
+
+Type should be Politics or Crime. If its about an offending police man, Police
+
+Don't use triple single quotes in the answer.
+
+for the thumbnail image pick the most likely file in files to contain the image of the offender
+
+For the people mentioned, include them and the offences, sentences if known, with a role of Offender
+Do not include the police in the list.
+For the victims include them with a role of Victim if you know their names
+
+Take the text and use that to generate the yaml tags for youtube that optimises for views
+Include the name of any offenders as individual tags
+Include the location in the tags. If the location is Like Lancing Sussex, England, UK. Then one tag for each.
+In the tags include the name of the police force
+Include the Type in the tags

@@ -1,0 +1,104 @@
+Date
+===============
+
+===============
+
+Title
+===============
+Hitchin County Lines drug dealer jailed
+===============
+
+Source
+===============
+Herts
+===============
+
+text
+===============
+A dealer who was part of a drug gang operating in Hatfield has been jailed for three years.
+Kamarley Jones-Ebanks
+Following an investigation by Hertfordshire Constabulary’s County Lines Investigation Unit, enquiries were carried out at an address in Hitchin in July 2025. Kamarley Jones-Ebanks, aged 23, formerly of Highover Way, Hitchin, was arrested in connection with drug offences in Hatfield.
+Jones-Ebanks appeared at St Albans Crown Court on Thursday 29 January and was sentenced to three years in prison after pleading guilty to being concerned in the offer to supply Class A (crack cocaine).
+Detective Sergeant Chris Cowell, from the Serious and Organised Crime Command, said: “This operation is part of a long running investigation into a drug line operating in Hatfield supplying crack cocaine, of which Jones-Ebanks was a key member.
+“These drug lines are run by organised crime groups who use violence and commit a whole range of crimes that pose a real threat to the community. Our investigations depend on information from members of the public to help us crack down on drug-related crime. Any information you can provide, no matter how small it may seem, could help us to identify and apprehend drug dealers.”
+You can report information about a crime online atherts.police.uk/report (http://www.herts.police.uk/Report)or speak to an operator in our Force Communications Room via our online web chat, which can be launched here:herts.police.uk/contact (http://www.herts.police.uk/contact). You also call the non-emergency number 101. If a crime is in progress call 999.
+Alternatively, you can stay 100% anonymous by contacting the independent charity Crimestoppers on 0800 555 111 or via their untraceable online form atcrimestoppers-uk.org (https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcrimestoppers-uk.org%2Fgive-information%2Fforms%2Fpre-form&data=05%7C01%7CDaniel.Atkinson%40herts.police.uk%7C8062d08e5bfb43fd4e1d08db83bbeaa4%7Ca3c59d1bb8f142999d6a39ad8f570422%7C0%7C0%7C638248615329632545%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=z2E5HgZVMoIOoMUtZ63xdvMeCd9oqhnpvCR3XSI6hN8%3D&reserved=0).
+===============
+
+url
+===============
+https://www.herts.police.uk/news/hertfordshire/news/2026/february-2026/hitchin-county-lines-drug-dealer-jailed/
+===============
+
+id
+===============
+1678092
+===============
+
+Files
+===============
+
+news_02022026_0119_jones-ebanks.jpg
+
+===============
+
+Summarise the story into the following yaml format
+
+===============
+Source:
+Id:
+Type: # Politics or Crime or Police if its a bad police officer
+Date:  # in format YYYY-MM-DD
+Title:
+URL:
+Thumbnail:  # URL to thumbnail image
+Location:  # e.g., "North Rhine-Westphalia, Germany"
+Tags:  # list of tags
+  - tag a
+  - tag b
+Description:  # full description of the news or content
+People:
+  - Person:
+      Name:
+      Nationality: Unknown
+      Age:  # if known. If not leave off
+      DateOfBirth: # if known. If not leave off
+      Gender: # Male or Female or Unknown
+      Role: # Offender or Victim
+      Crimes:  # if you know what they are. Charged, or awaiting sentence is acceptable here
+        - Crime:
+            Offence:
+            Sentence: # if you know what they are. Charged, or awaiting sentence is acceptable here
+Segments:
+  - Segment:
+      Image: name of image
+      Text: |
+        
+        Summary of story goes here
+        
+        Like, subscribe and share if you find this information useful.
+===============
+
+Return the yaml format unquoted.
+For the title and thumbnail text, make it under 50 characters. Name of the main offender and their crime. If just a victim, then their name and the offence against them.
+
+Thumbnail text to be the same as the title
+Description is short. The summary in the segment is long.
+For the long text write over multiple lines
+Tags optimised for a youtube video
+
+Type should be Politics or Crime. If its about an offending police man, Police
+
+Don't use triple single quotes in the answer.
+
+for the thumbnail image pick the most likely file in files to contain the image of the offender
+
+For the people mentioned, include them and the offences, sentences if known, with a role of Offender
+Do not include the police in the list.
+For the victims include them with a role of Victim if you know their names
+
+Take the text and use that to generate the yaml tags for youtube that optimises for views
+Include the name of any offenders as individual tags
+Include the location in the tags. If the location is Like Lancing Sussex, England, UK. Then one tag for each.
+In the tags include the name of the police force
+Include the Type in the tags

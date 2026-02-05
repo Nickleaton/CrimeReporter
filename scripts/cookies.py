@@ -51,7 +51,7 @@ def ensure_storage_states():
     roots.append("http://www.youtube.com/")
 
     for root in roots:
-        saver = StorageSaver(root)
+        saver = StorageSaver(root, r'D:/PycharmProjects/CrimeReportData/local_storage')
         if saver.storage_file.exists():
             print(f"✅ {saver.storage_file} already exists — skipping.")
         else:

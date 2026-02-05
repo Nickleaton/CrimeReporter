@@ -1,0 +1,111 @@
+Date
+===============
+
+===============
+
+Title
+===============
+Police officer found guilty over fatal collision while responding to emergency call
+===============
+
+Source
+===============
+CPS
+===============
+
+text
+===============
+A police officer who drove through a red light at speed while responding to a 999 call has been found guilty of causing death by dangerous driving.
+PC Mark Roberts, 35, was also found guilty today by a jury at Teeside Crown Court of causing serious injury by dangerous driving.He was driving a marked Northumbria Police vehicle on 8 July 2022 when he collided with a motorcycle at a junction on Dunston Road, Gateshead. The motorcycle was being ridden by Ronald Pinkney, 77, with his wife Muriel Pinkney, 74, as a passenger. Mrs Pinkney suffered fatal injuries and died in hospital nine days later. Mr Pinkney sustained serious injuries including broken ribs and a leg fracture.
+PC Roberts had been dispatched to a Grade 1 emergency involving a baby who had stopped breathing. He activated his vehicle’s blue lights and siren but failed to negotiate two sets of red traffic signals in a safe manner. The second set controlled a junction where Mr Pinkney had the right of way. Despite having a clear green light, the motorcycle was struck by the police vehicle as it entered the junction.
+Gavin Hotchkiss, Specialist Prosecutor in the CPS Special Crime division said: "This was a tragic and avoidable incident. While PC Roberts was responding to an emergency, he had a duty to drive with due care and attention to the safety of others. The evidence showed he failed to treat the red light as a stop or give way, as required by police training. The CPS presented a strong case that his driving fell far below the standard expected, and the jury agreed."
+Building the Case:
+The CPS worked closely with the Independent Office for Police Conduct and Northumbria Police to build a strong case. Key evidence included dashcam footage from a witness vehicle and helmet camera footage from Mr Pinkney, which captured the moment of impact. Forensic collision investigators calculated that PC Roberts was travelling at up to 49mph in a 30mph zone and failed to apply full emergency braking before the collision.
+Expert analysis confirmed that Mr Pinkney had the right of way and that PC Roberts did not follow police driving protocols when approaching the red light. The prosecution successfully argued that the officer’s failure to identify the motorcycle and yield at the junction amounted to dangerous driving.
+Under section 1 of the Road Traffic Act 1988, causing death by dangerous driving requires proof that the defendant’s driving fell far below the standard expected of a competent and careful driver, and that it caused the death. CPS guidance emphasizes that emergency drivers must still exercise caution and comply with statutory exemptions responsibly. Regulation 5 of the Traffic Signs Regulations and General Directions 2016 states that even when proceeding through a red light under exemption, the driver must not endanger others or cause them to change speed or course to avoid an accident.
+The evidence showed that PC Roberts failed to treat the red light as a stop or give way, as required by police training. He did not identify the motorcycle approaching with right of way and did not apply full emergency braking. These failures were central to the CPS’s case that his driving was dangerous and directly caused the fatal collision.
+===============
+
+url
+===============
+https://www.cps.gov.uk/cps/news/police-officer-found-guilty-over-fatal-collision-while-responding-emergency-call
+===============
+
+id
+===============
+28331
+===============
+
+Files
+===============
+
+044_about_us_menu.jpg.webp
+
+008_victim_witnesses_menu.jpg.webp
+
+129_prosecution_guidance_menu.jpg.webp
+
+LisaR_menu.jpg.webp
+
+===============
+
+Summarise the story into the following yaml format
+
+===============
+Source:
+Id:
+Type: # Politics or Crime or Police if its a bad police officer
+Date:  # in format YYYY-MM-DD
+Title:
+URL:
+Thumbnail:  # URL to thumbnail image
+Location:  # e.g., "North Rhine-Westphalia, Germany"
+Tags:  # list of tags
+  - tag a
+  - tag b
+Description:  # full description of the news or content
+People:
+  - Person:
+      Name:
+      Nationality: Unknown
+      Age:  # if known. If not leave off
+      DateOfBirth: # if known. If not leave off
+      Gender: # Male or Female or Unknown
+      Role: # Offender or Victim
+      Crimes:  # if you know what they are. Charged, or awaiting sentence is acceptable here
+        - Crime:
+            Offence:
+            Sentence: # if you know what they are. Charged, or awaiting sentence is acceptable here
+Segments:
+  - Segment:
+      Image: name of image
+      Text: |
+        
+        Summary of story goes here
+        
+        Like, subscribe and share if you find this information useful.
+===============
+
+Return the yaml format unquoted.
+For the title and thumbnail text, make it under 50 characters. Name of the main offender and their crime. If just a victim, then their name and the offence against them.
+
+Thumbnail text to be the same as the title
+Description is short. The summary in the segment is long.
+For the long text write over multiple lines
+Tags optimised for a youtube video
+
+Type should be Politics or Crime. If its about an offending police man, Police
+
+Don't use triple single quotes in the answer.
+
+for the thumbnail image pick the most likely file in files to contain the image of the offender
+
+For the people mentioned, include them and the offences, sentences if known, with a role of Offender
+Do not include the police in the list.
+For the victims include them with a role of Victim if you know their names
+
+Take the text and use that to generate the yaml tags for youtube that optimises for views
+Include the name of any offenders as individual tags
+Include the location in the tags. If the location is Like Lancing Sussex, England, UK. Then one tag for each.
+In the tags include the name of the police force
+Include the Type in the tags

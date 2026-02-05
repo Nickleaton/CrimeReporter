@@ -72,6 +72,21 @@ log:
   launcher_log: logs/launcher.log
 phonemes:
   - phoneme:
+      source: Al Fayed
+      target: <sub alias="Al Feye. Ed">Al Fayed</sub>
+  - phoneme:
+      source: Widnes
+      target: <sub alias="Wid nez">Widnes</sub>
+  - phoneme:
+      source: ULEZ
+      target: <sub alias="you lez">ULEZ</sub>
+  - phoneme:
+      source: Rhyl
+      target: <sub alias="Rill"> Rhyl</sub>
+  - phoneme:
+      source: Yves
+      target: <sub alias="Eves">Yves</sub>
+  - phoneme:
       source: Smethwick
       target: <sub alias="Smethick">Semthwick</sub>
   - phoneme:
