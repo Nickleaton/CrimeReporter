@@ -72,6 +72,12 @@ log:
   launcher_log: logs/launcher.log
 phonemes:
   - phoneme:
+      source: Reading
+      target: <sub alias="Redding">Reading</sub>
+  - phoneme:
+      source: Berkeley
+      target: <sub alias="Barkeley">Berkeley</sub>
+  - phoneme:
       source: Al Fayed
       target: <sub alias="Al Feye. Ed">Al Fayed</sub>
   - phoneme:
