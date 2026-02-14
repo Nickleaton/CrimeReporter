@@ -72,6 +72,9 @@ log:
   launcher_log: logs/launcher.log
 phonemes:
   - phoneme:
+      source: Charring
+      target: <sub alias="Cha-ring">Charring</sub>
+  - phoneme:
       source: Reading
       target: <sub alias="Redding">Reading</sub>
   - phoneme:

@@ -1,3 +1,4 @@
+import logging
 from datetime import datetime
 from pathlib import Path
 
@@ -8,6 +9,7 @@ from crimereporter.utils.config import Config
 
 config = Config()
 
+logger = logging.getLogger(__name__)
 
 class CommitCommand(Command):
     """Command to commit downloaded articles to version control."""
@@ -25,13 +27,13 @@ class CommitCommand(Command):
         directory using Git, with a timestamped commit message.
         """
         super().execute()
-        downloads: Path = Path(config.root) / "downloads"
-        programs: Path = Path(config.root) / "programs"
         iso_time: str = datetime.now().isoformat(timespec="seconds")
         commit_message: str = f"Download {iso_time}"
 
-        self.repo.git.add(downloads)
-        self.repo.git.add(programs)
+        self.repo.git.add(["downloads", "programs"])
 
-        if self.repo.index.diff("HEAD") or self.repo.untracked_files:
+        if self.repo.is_dirty(untracked_files=True):
+            logger.info(f"git commit -m {commit_message} --no-verify")
             self.repo.git.commit("-m", commit_message, "--no-verify")
+        else:
+            logger.info("No changes to commit")

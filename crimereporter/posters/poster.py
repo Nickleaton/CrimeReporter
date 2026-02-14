@@ -4,16 +4,22 @@ from pathlib import Path
 
 from crimereporter.caches.media_cache import MediaCache
 from crimereporter.caches.message_cache import MessageCache
+from crimereporter.utils.config import Config
 
 logger = getLogger(__name__)
+config = Config()
 
 
 class Poster(ABC):
     """Base class for posting messages to a platform with caching."""
 
     def __init__(self):
-        self.message_cache = MessageCache(Path("caches") / f"{self.name}_messages.csv")
-        self.media_cache = MediaCache(Path("caches") / f"{self.name}_media.csv")
+        self.message_cache = MessageCache(
+            Path(config.root) / f"caches/{self.name}_messages.csv"
+        )
+        self.media_cache = MediaCache(
+            Path(config.root) / f"caches/{self.name}_media.csv"
+        )
 
     @property
     def name(self) -> str:
