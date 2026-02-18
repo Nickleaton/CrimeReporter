@@ -1,3 +1,4 @@
+from datetime import datetime
 import hashlib
 from urllib.parse import urljoin
 
@@ -9,7 +10,6 @@ from crimereporter.sources.force import Force
 
 
 class NCAForce(Force):
-
     def fetch_latest_urls(self) -> list[str]:
         text = Fetcher().fetch(self.root)
         soup = BeautifulSoup(text, "html.parser")
@@ -43,7 +43,9 @@ class NCAForce(Force):
         if not body:
             return ""
 
-        paragraphs = [p.get_text() for p in body.find_all("p") if p.get_text(strip=True)]
+        paragraphs = [
+            p.get_text() for p in body.find_all("p") if p.get_text(strip=True)
+        ]
 
         return "\n\n".join(paragraphs)
 
@@ -72,23 +74,30 @@ class NCAForce(Force):
         Use <title> as fallback, but clean branding.
         """
         if self.soup.title and self.soup.title.string:
-            return self.soup.title.string.replace(" - National Crime Agency", "").strip()
+            return self.soup.title.string.replace(
+                " - National Crime Agency", ""
+            ).strip()
         return ""
 
     def extract_date(self) -> str:
         """
-        NCA does not use <time>.
-        Date of Incident is stored as a custom field.
-        Example:
-          <span class="field-label">Date of Incident:</span>
-          <span class="field-value">2020-07-30</span>
+        Extract the date of the article:
+        - First, looks for <strong> inside <p> in articleBody.
+        - Parses date in format 'DD Month YYYY'.
+        Returns date as 'YYYY-MM-DD' string if found, else empty string.
         """
-        for label in self.soup.select("span.field-label"):
-            if label.get_text(strip=True).startswith("Date of Incident"):
-                value = label.find_next_sibling("span", class_="field-value")
-                if value:
-                    return value.get_text(strip=True)
-        return ""
+        # Find all <strong> tags inside <p> elements
+        strong_tags = self.soup.select("div[itemprop='articleBody'] p strong")
+
+        for strong in strong_tags:
+            date_str = strong.get_text(strip=True)
+            try:
+                dt = datetime.strptime(date_str, "%d %B %Y")
+                return dt.strftime("%Y-%m-%d")
+            except ValueError:
+                continue  # Not a date, try next strong tag
+
+        return ""  # No valid date found
 
     def get_file_urls(self) -> list[str]:
         """
