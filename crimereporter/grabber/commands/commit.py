@@ -20,20 +20,17 @@ class CommitCommand(Command):
         self.repo: Repo = Repo(repo)
 
     def execute(self) -> None:
-        """
-        Execute the commit command.
-
-        Stages and commits any new or modified files in the 'downloads'
-        directory using Git, with a timestamped commit message.
-        """
         super().execute()
+
         iso_time: str = datetime.now().isoformat(timespec="seconds")
         commit_message: str = f"Download {iso_time}"
 
-        self.repo.git.add(["downloads", "programs"])
+        # Stage everything
+        self.repo.git.add(A=True)
 
-        if self.repo.is_dirty(untracked_files=True):
-            logger.info(f"git commit -m {commit_message} --no-verify")
+        # Only commit if something is staged
+        if self.repo.index.diff("HEAD") or self.repo.untracked_files:
+            logger.info(f'git commit -m "{commit_message}" --no-verify')
             self.repo.git.commit("-m", commit_message, "--no-verify")
         else:
             logger.info("No changes to commit")

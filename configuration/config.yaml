@@ -72,6 +72,9 @@ log:
   launcher_log: logs/launcher.log
 phonemes:
   - phoneme:
+      source: Smethwick
+      target: <sub alias="Smeth-ick">Smethwick</sub>
+  - phoneme:
       source: Charring
       target: <sub alias="Cha-ring">Charring</sub>
   - phoneme:
@@ -356,6 +359,17 @@ source:
 
 sources:
 
+
+  - source:
+      short_name: CrimeStoppers
+      directory: CrimeStoppers
+      long_name: CrimeStoppers
+      root: https://crimestoppers-uk.org/give-information/most-wanted
+      youtube_id:
+      channel_id:
+      source_type: CrimeStoppersForce
+
+
   - source:
       short_name: Dorset
       directory: Dorset
@@ -373,6 +387,7 @@ sources:
       youtube_id:
       channel_id:
       source_type: NCAWantedForce
+
 
   - source:
       short_name: NCA
