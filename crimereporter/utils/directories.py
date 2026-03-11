@@ -27,11 +27,11 @@ class Directories:
 
     @staticmethod
     def get_archive_programs() -> list[int]:
-        """Return a sorted list of available Active scripts."""
+        """Return a sorted list of available Archive scripts."""
         return Directories.get_programs_from_directory(Directories.DIRECTORY / "Archive")
 
     @staticmethod
-    def get_all_programs() -> list [int]:
+    def get_all_programs() -> list[int]:
         """Return all numeric program directories under programs/*."""
         programs = set()
 
@@ -43,38 +43,40 @@ class Directories:
                 if d.is_dir() and d.name.isdigit():
                     programs.add(int(d.name))
 
-        return list(programs)
+        return sorted(programs)
 
     @staticmethod
     def get_newest_active_program() -> int:
         """Return the largest numeric directory under Active."""
         programs = Directories.get_active_programs()
-        if len(programs) == 0:
+        if not programs:
             return 0
-        return Directories.get_active_programs()[-1]
+        return programs[-1]
 
     @staticmethod
     def get_oldest_active_program() -> int:
         """Return the smallest numeric directory under Active."""
-        return Directories.get_active_programs()[0]
+        programs = Directories.get_active_programs()
+        return programs[0] if programs else 0
 
     @staticmethod
     def get_newest_archive_program() -> int:
         """Return the largest numeric directory under Archive."""
         programs = Directories.get_archive_programs()
-        if len(programs) == 0:
+        if not programs:
             return 0
-        return Directories.get_archive_programs()[-1]
+        return programs[-1]
 
     @staticmethod
     def get_oldest_archive_program() -> int:
         """Return the smallest numeric directory under Archive."""
-        return Directories.get_archive_programs()[0]
+        programs = Directories.get_archive_programs()
+        return programs[0] if programs else 0
 
     @staticmethod
     def get_next_program() -> int:
         """Return the smallest missing program number, or max + 1."""
-        programs = Directories.get_all_programs()
+        programs = set(Directories.get_all_programs())
         i = 1
         while i in programs:
             i += 1
