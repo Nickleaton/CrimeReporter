@@ -72,6 +72,18 @@ log:
   launcher_log: logs/launcher.log
 phonemes:
   - phoneme:
+      source: Fayed
+      target: <sub alias="Fi ed">Fayed</sub>
+  - phoneme:
+      source: Stourbridge
+      target: <sub alias="Stowerbridge">Stourbridge</sub>--
+  - phoneme:
+      source: Ebbw
+      target: <sub alias="Ebber">Ebbw</sub>-
+  - phoneme:
+      source: Gascoine
+      target: <sub alias="Gas-coin">Gascoine</sub>
+  - phoneme:
       source: Smethwick
       target: <sub alias="Smeth-ick">Smethwick</sub>
   - phoneme:

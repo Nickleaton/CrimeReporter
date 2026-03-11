@@ -6,8 +6,7 @@ config = Config()
 
 
 class Directories:
-    ACTIVE_DIRECTORY = Path(config.root) / "programs/Active"
-    ARCHIVE_DIRECTORY = Path(config.root) / "programs/Archive"
+    DIRECTORY = Path(config.root) / "programs"
 
     @staticmethod
     def get_programs_from_directory(search_dir: Path) -> list[int]:
@@ -24,12 +23,27 @@ class Directories:
     @staticmethod
     def get_active_programs() -> list[int]:
         """Return a sorted list of available Active scripts."""
-        return Directories.get_programs_from_directory(Directories.ACTIVE_DIRECTORY)
+        return Directories.get_programs_from_directory(Directories.DIRECTORY / "Active")
 
     @staticmethod
     def get_archive_programs() -> list[int]:
         """Return a sorted list of available Active scripts."""
-        return Directories.get_programs_from_directory(Directories.ARCHIVE_DIRECTORY)
+        return Directories.get_programs_from_directory(Directories.DIRECTORY / "Archive")
+
+    @staticmethod
+    def get_all_programs() -> list [int]:
+        """Return all numeric program directories under programs/*."""
+        programs = set()
+
+        for category in Directories.DIRECTORY.iterdir():
+            if not category.is_dir():
+                continue
+
+            for d in category.iterdir():
+                if d.is_dir() and d.name.isdigit():
+                    programs.add(int(d.name))
+
+        return list(programs)
 
     @staticmethod
     def get_newest_active_program() -> int:
@@ -59,6 +73,9 @@ class Directories:
 
     @staticmethod
     def get_next_program() -> int:
-        active: int = Directories.get_newest_active_program()
-        archive: int = Directories.get_newest_archive_program()
-        return max(active, archive) + 1
+        """Return the smallest missing program number, or max + 1."""
+        programs = Directories.get_all_programs()
+        i = 1
+        while i in programs:
+            i += 1
+        return i
