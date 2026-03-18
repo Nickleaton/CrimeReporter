@@ -42,23 +42,31 @@ def main():
     Source.load_sources()
     parser = get_parser()
     args = parser.parse_args()
+    if args.source:
+        sources = Source.instances[args.source]
+    else:
+        sources = list(Source.instances.values())
 
     if args.command == "commit":
         command = CommitCommand(r"D:\PycharmProjects\CrimeReportData")
     elif args.command == "download":
-        command = DownloadCommand(args.overwrite, args.force)
+        command = ComposedCommand([DownloadCommand(args.overwrite, source) for source in sources])
     elif args.command == "refresh":
-        command = RefreshCommand(args.overwrite, args.force)
+        command = ComposedCommand([RefreshCommand(args.overwrite, source) for source in sources])
     elif args.command == "index":
         command = IndexCommand()
     elif args.command == "regenerate":
         command = RegenerateCommand()
     elif args.command == "grab":
         command = ComposedCommand(
-            [DownloadCommand(args.overwrite), IndexCommand(), CommitCommand(r"D:\PycharmProjects\CrimeReportData")]
+            [
+                ComposedCommand([DownloadCommand(args.overwrite, source) for source in sources]),
+                IndexCommand(),
+                CommitCommand(r"D:\PycharmProjects\CrimeReportData")
+            ]
         )
     elif args.command == "youtube":
-        command = YoutubeAtomCommand(args.overwrite)
+        command = ComposedCommand([YoutubeAtomCommand(args.overwrite, source) for source in sources])
     else:
         parser.print_help()
         return

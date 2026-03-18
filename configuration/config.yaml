@@ -72,6 +72,9 @@ log:
   launcher_log: logs/launcher.log
 phonemes:
   - phoneme:
+      source: Ioana
+      target: <sub alias="Joanna">Ioana</sub>
+  - phoneme:
       source: Fayed
       target: <sub alias="Fi ed">Fayed</sub>
   - phoneme:

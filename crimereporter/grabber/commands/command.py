@@ -1,5 +1,5 @@
 import logging
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
 from crimereporter.utils.config import Config
 
@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 config = Config()
 
 
-class Command:
+class Command(ABC):  # noqa: F821
     """Base class for all commands."""
 
     def __init__(self) -> None:
@@ -20,10 +20,9 @@ class Command:
         else:
             self.name = self.__class__.__name__.removesuffix("Command")
 
-    @abstractmethod
     def execute(self) -> None:
         """Execute the command. To be overridden by subclasses."""
-        pass
+        print(f"COMMAND: {self.name}")
 
 
 class ComposedCommand(Command):
