@@ -72,6 +72,9 @@ log:
   launcher_log: logs/launcher.log
 phonemes:
   - phoneme:
+      source: Berkshire
+      target: <sub alias="Barkshire">Berkshire</sub>
+  - phoneme:
       source: Ioana
       target: <sub alias="Joanna">Ioana</sub>
   - phoneme:

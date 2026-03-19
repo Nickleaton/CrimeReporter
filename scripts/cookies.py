@@ -1,4 +1,5 @@
 from pathlib import Path
+from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright
 
@@ -20,7 +21,7 @@ class StorageSaver:
     @staticmethod
     def extract_domain(url: str) -> str:
         """Extracts the domain name from a full URL."""
-        return url.split("//")[-1].split("/")[0]
+        return urlparse(url).netloc
 
     def save(self) -> None:
         """Launches a browser, lets the user solve Cloudflare, and saves storage state."""
@@ -41,7 +42,7 @@ class StorageSaver:
             browser.close()
 
 
-def ensure_storage_states():
+def ensure_storage_states() -> None:
     roots = []
     for entry in config.sources:
         root = entry["source"]["root"]
